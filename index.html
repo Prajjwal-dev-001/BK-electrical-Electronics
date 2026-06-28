@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="9I2s0u0piSw72AEt4akdBlqg9257O_HUzMKmOfeq-lo" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your Trusted Local Electrical Shop — Inverters, Batteries, Coolers, Fans, LED Lights and more." />
+  <title>Electrical Shop — Your Trusted Local Electricals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* ── REPAIR ANNOUNCEMENT BAR ── */
+    #repair-announcement-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        #7B0000   0%,
+        #C0392B  30%,
+        #E74C3C  55%,
+        #E67E22  80%,
+        #FFC300 100%
+      );
+      background-size: 200% 100%;
+      animation: barGradientShift 6s ease infinite alternate;
+      box-shadow:
+        0 4px 24px rgba(192, 57, 43, 0.55),
+        0 2px 0px rgba(255, 195, 0, 0.35) inset;
+      overflow: hidden;
+      min-height: 64px;
+    }
+    
+    #repair-announcement-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent
+      );
+      animation: barShimmer 3.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes barGradientShift {
+      0%   { background-position: 0%   50%; }
+      100% { background-position: 100% 50%; }
+    }
+    
+    @keyframes barShimmer {
+      0%   { left: -75%; }
+      100% { left: 130%; }
+    }
+    
+    .repair-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px 56px 14px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      flex-wrap: wrap;
+      min-height: 64px;
+    }
+    
+    .repair-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .repair-bar-icon {
+      font-size: 22px;
+      animation: wrenchWiggle 2.5s ease-in-out infinite;
+      display: inline-block;
+    }
+    
+    @keyframes wrenchWiggle {
+      0%, 100% { transform: rotate(0deg);   }
+      20%       { transform: rotate(-18deg); }
+      40%       { transform: rotate(14deg);  }
+      60%       { transform: rotate(-8deg);  }
+      80%       { transform: rotate(5deg);   }
+    }
+    
+    .repair-bar-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+      line-height: 1.5;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.30);
+    }
+    
+    .repair-bar-text strong {
+      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 16px;
+    }
+    
+    .repair-bar-divider {
+      color: rgba(255, 255, 255, 0.40);
+      font-size: 18px;
+      font-weight: 100;
+      line-height: 1;
+      user-select: none;
+    }
+    
+    .repair-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    
+    .repair-bar-phone-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 500;
+    }
+    
+    .repair-bar-phone-link {
+      font-family: var(--font-heading);
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #FFF9C4;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      padding: 5px 16px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      transition: var(--transition-smooth);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+      white-space: nowrap;
+    }
+    
+    .repair-bar-phone-link:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.70);
+      color: #FFFFFF;
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.20);
+    }
+    
+    #repair-bar-close {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      padding: 0;
+    }
+    
+    #repair-bar-close:hover {
+      background: rgba(255, 255, 255, 0.30);
+      transform: translateY(-50%) rotate(90deg);
+    }
+    
+    @media (max-width: 768px) {
+      .repair-bar-inner { padding: 10px 44px 10px 14px; gap: 10px; justify-content: center; text-align: center; }
+      .repair-bar-divider { display: none; }
+      .repair-bar-left, .repair-bar-right   { justify-content: center; }
+      .repair-bar-text    { font-size: 13px; }
+      .repair-bar-phone-link { font-size: 13.5px; }
+    }
+    
+    @media (max-width: 480px) {
+      .repair-bar-inner   { flex-direction: column; gap: 6px; padding: 10px 40px; }
+      .repair-bar-text    { text-align: center; font-size: 12px; }
+      .repair-bar-icon    { font-size: 18px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       DESIGN TOKEN SYSTEM
+    ══════════════════════════════════════════════════════ */
+    :root {
+      --color-bg-primary:       #F9F7F4;
+      --color-bg-white:         #FFFFFF;
+      --color-bg-warm:          #FFF8F0;
+      --color-header-deep:      #1A0A00;
+      --color-header-slate:     #2D1200;
+      --color-accent-primary:   #C0392B;
+      --color-accent-crimson:   #A93226;
+      --color-accent-rose:      #E74C3C;
+      --color-accent-gold:      #F39C12;
+      --color-accent-amber:     #E67E22;
+      --color-accent-yellow:    #F1C40F;
+      --color-accent-sunburst:  #FFC300;
+      --grad-primary: linear-gradient(135deg, #C0392B 0%, #E74C3C 50%, #A93226 100%);
+      --grad-gold: linear-gradient(135deg, #F39C12 0%, #FFC300 50%, #E67E22 100%);
+      --grad-hero-accent: linear-gradient(135deg, #7B0000 0%, #C0392B 40%, #E67E22 100%);
+      --grad-card-hover: linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 100%);
+      --grad-bestseller-header: linear-gradient(135deg, #1A0A00 0%, #3D0E00 50%, #6B1A00 100%);
+      --grad-summer-header: linear-gradient(135deg, #0D2137 0%, #1565C0 50%, #0288D1 100%);
+      --grad-button-primary: linear-gradient(135deg, #C0392B 0%, #E74C3C 100%);
+      --grad-button-gold: linear-gradient(135deg, #F39C12 0%, #FFC300 100%);
+      --color-accent-summer:    #0288D1;
+      --color-accent-winter:    #C0392B;
+      --color-accent-green:     #C0392B;
+      --color-accent-orange:    #E67E22;
+      --color-text-primary:     #1A0A00;
+      --color-text-muted:       #6B5744;
+      --color-text-white:       #FFFFFF;
+      --color-border:           #E8D5C4;
+      --color-border-warm:      #D4A88A;
+      --color-shadow:           rgba(192, 57, 43, 0.08);
+      --shadow-card:            0 4px 24px rgba(100, 20, 10, 0.08);
+      --shadow-card-hover:      0 12px 40px rgba(192, 57, 43, 0.18);
+      --shadow-glow-red:        0 0 20px rgba(192, 57, 43, 0.35);
+      --shadow-glow-gold:       0 0 20px rgba(243, 156, 18, 0.40);
+      --font-heading:           'Poppins', sans-serif;
+      --font-body:              'Inter', sans-serif;
+      --radius-card:            16px;
+      --radius-btn:             50px;
+      --transition-smooth:      all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce:      all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body[data-season="winter"] {
+      --color-accent-primary:  #A93226;
+      --color-accent-gold:     #E67E22;
+      --grad-primary: linear-gradient(135deg, #922B21 0%, #C0392B 50%, #7B241C 100%);
+      --color-accent-green:    #A93226;
+      --color-accent-orange:   #E67E22;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       PREMIUM THEME ADDITIONS
+    ══════════════════════════════════════════════════════ */
+    .text-metallic-gold {
+      background: linear-gradient(135deg, #F39C12 0%, #FFC300 30%, #E67E22 60%, #F39C12 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: metalShimmer 3s linear infinite;
+    }
+
+    .text-metallic-red {
+      background: linear-gradient(135deg, #C0392B 0%, #E74C3C 35%, #922B21 65%, #E74C3C 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: metalShimmer 3s linear infinite;
+    }
+
+    @keyframes metalShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .btn-primary {
+      background: var(--grad-button-primary);
+      color: var(--color-text-white);
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(192, 57, 43, 0.35);
+      transition: var(--transition-smooth);
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+      border-radius: inherit;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-glow-red); filter: brightness(1.08);
+    }
+
+    .btn-gold {
+      background: var(--grad-button-gold); color: #1A0A00; border: none; border-radius: var(--radius-btn);
+      padding: 14px 32px; font-size: 15px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(243, 156, 18, 0.35); transition: var(--transition-smooth);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-gold); filter: brightness(1.05); }
+
+    .section-title::after { background: var(--grad-gold) !important; }
+
+    .trust-pill {
+      background: linear-gradient(135deg, #FFF8F0, #FFF3E0); border: 1px solid var(--color-border-warm);
+      color: var(--color-accent-crimson); border-radius: 20px; padding: 6px 16px; font-size: 12px; font-weight: 600;
+    }
+
+    .product-card:hover { border-color: var(--color-accent-gold) !important; box-shadow: var(--shadow-card-hover) !important; }
+    .badge-bestseller { background: var(--grad-primary) !important; color: white; }
+    .filter-pill.active { background: var(--grad-primary) !important; color: white !important; border-color: transparent !important; box-shadow: 0 4px 12px rgba(192, 57, 43, 0.30); }
+
+    #main-search:focus, #main-search-mobile:focus { border-color: var(--color-accent-gold) !important; box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.25) !important; }
+    .pin-result.success { color: #27AE60 !important; }
+    .pin-result.outside  { color: var(--color-accent-amber) !important; }
+
+    #scroll-to-top-btn { background: var(--grad-primary) !important; }
+    #scroll-to-top-btn:hover { background: var(--grad-primary) !important; filter: brightness(1.1); }
+    .tour-dot.active { background: var(--color-accent-gold) !important; }
+    #offseason-toggle-btn:hover { background: var(--grad-primary) !important; border-color: transparent !important; color: white !important; }
+
+    .category-divider {
+      position: relative; height: 2px; margin: 32px 0 28px 0;
+      border-radius: 2px; overflow: hidden; background: var(--color-border);
+    }
+    .category-divider::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      border-radius: 2px; animation: dividerSweep 2.5s ease-in-out infinite;
+    }
+    .category-divider[data-category="inverters"]::after, .category-divider[data-category="batteries"]::after, .category-divider[data-category="combos"]::after, .category-divider[data-category="heaters"]::after, .category-divider[data-category="geysers"]::after, .category-divider[data-category="immersion"]::after, .category-divider[data-category="iron"]::after, .category-divider[data-category="mixers"]::after { background: linear-gradient(90deg, transparent, #C0392B, #E74C3C, transparent); }
+    .category-divider[data-category="coolers"]::after, .category-divider[data-category="fans"]::after, .category-divider[data-category="pedestal"]::after, .category-divider[data-category="exhaust"]::after, .category-divider[data-category="pumps"]::after { background: linear-gradient(90deg, transparent, #0288D1, #00BCD4, transparent); }
+    .category-divider[data-category="lights"]::after, .category-divider[data-category="batten"]::after, .category-divider[data-category="switches"]::after { background: linear-gradient(90deg, transparent, #F39C12, #FFC300, transparent); }
+    @keyframes dividerSweep { 0% { left: -60%; } 100% { left: 160%; } }
+
+    .summer-collection-header {
+      background: linear-gradient(135deg, #0D2137 0%, #1565C0 45%, #0288D1 100%);
+      border-radius: 14px; padding: 18px 24px; margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+    .summer-collection-header::before {
+      content: '☀️'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 48px; opacity: 0.25; animation: sunPulse 3s ease-in-out infinite;
+    }
+    @keyframes sunPulse { 0%, 100% { transform: translateY(-50%) scale(1);   opacity: 0.25; } 50% { transform: translateY(-50%) scale(1.1); opacity: 0.35; } }
+    .summer-collection-header h3 { color: white; font-family: var(--font-heading); font-size: 18px; font-weight: 700; }
+    .summer-collection-header p  { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 4px; }
+
+    .product-card.card-entering { animation: cardReveal 0.38s ease forwards; }
+    @keyframes cardReveal { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes rippleAnim { to { transform: scale(35); opacity: 0; } }
+
+    /* GLOBAL RESETS */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); background-color: var(--color-bg-primary); color: var(--color-text-primary); overflow-x: hidden; line-height: 1.6; }
+    h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: var(--font-body); cursor: pointer; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    .section-title { font-family: var(--font-heading); font-weight: 700; font-size: 2rem; color: var(--color-text-primary); display: inline-block; padding-bottom: 8px; position: relative; }
+    .section-title::after { content: ''; display: block; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background-color: var(--color-accent-green); border-radius: 2px; transition: var(--transition-smooth); }
+
+    /* WATERMARK */
+    #owner-watermark {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: url('./assets/owner-bg.png'); background-size: contain; background-position: center bottom; background-repeat: no-repeat;
+      opacity: 0; z-index: -1; pointer-events: none; user-select: none; transition: opacity 0.5s ease;
+    }
+
+    /* HEADER */
+    #main-header { position: relative; z-index: 1000; transition: var(--transition-smooth); }
+    .header-info-bar { background: var(--color-header-slate); height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 12px; color: rgba(255,255,255,0.85); }
+    .header-info-bar a { color: rgba(255,255,255,0.85); }
+    .header-info-bar a:hover { color: var(--color-accent-green); }
+    .info-bar-left { display: flex; align-items: center; gap: 12px; }
+    .info-bar-sep { opacity: 0.35; }
+    .info-bar-hours { opacity: 0.8; }
+    .header-main { background: var(--color-header-deep); padding: 12px 0; transition: background 0.3s ease, box-shadow 0.3s ease; }
+    #main-header.scrolled .header-main { background: rgba(26,60,77,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    .header-main-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; }
+    .header-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .header-logo img { height: 48px; width: auto; object-fit: contain; }
+    .logo-fallback { width: 48px; height: 48px; background: var(--color-accent-green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .logo-text-block { display: flex; flex-direction: column; }
+    .logo-shop-name { font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--color-text-white); line-height: 1.2; }
+    .logo-tagline { font-size: 11px; color: var(--color-accent-green); letter-spacing: 1.5px; text-transform: uppercase; }
+    .header-search { max-width: 520px; width: 100%; position: relative; }
+    .search-input-wrap { position: relative; }
+    .search-input { width: 100%; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.2); border-radius: var(--radius-btn); color: var(--color-text-white); padding: 10px 48px 10px 20px; font-size: 14px; font-family: var(--font-body); outline: none; transition: var(--transition-smooth); }
+    .search-input::placeholder { color: rgba(255,255,255,0.55); }
+    .search-input:focus { border-color: var(--color-accent-green); background: rgba(255,255,255,0.18); box-shadow: 0 0 0 3px rgba(0,200,83,0.2); }
+    .search-icon-btn { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; color: rgba(255,255,255,0.7); }
+    .search-icon-btn svg { width: 18px; height: 18px; }
+    .search-dropdown { display: none; position: absolute; top: calc(100% + 8px); left: 0; width: 100%; background: var(--color-bg-white); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); max-height: 320px; overflow-y: auto; z-index: 1001; border: 1px solid var(--color-border); }
+    .search-dropdown.active { display: block; }
+    .search-result-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--color-border); transition: background 0.15s; }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: #F0FFF4; }
+    .search-result-thumb { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; background: var(--color-bg-primary); flex-shrink: 0; padding: 4px; border: 1px solid var(--color-border); }
+    .search-result-info { flex: 1; min-width: 0; }
+    .search-result-name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .search-result-meta { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+    .search-cat-badge { background: var(--color-accent-green); color: white; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; text-transform: capitalize; }
+    .search-brand { font-size: 12px; color: var(--color-text-muted); }
+    .search-hint { text-align: center; font-size: 11px; color: var(--color-text-muted); font-style: italic; padding: 10px 16px; border-top: 1px solid var(--color-border); }
+    .search-not-found { padding: 24px; text-align: center; }
+    .search-not-found-icon { font-size: 32px; margin-bottom: 8px; }
+    .search-not-found h4 { font-size: 15px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; }
+    .search-not-found p { font-size: 13px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px; }
+    .search-not-found-btn { display: inline-block; background: var(--color-accent-green); color: white; border: none; border-radius: var(--radius-btn); padding: 9px 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+    .search-not-found-btn:hover { filter: brightness(0.9); }
+    .search-not-found-btn.whatsapp { background: #25D366; }
+    .header-pin-widget { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; min-width: 200px; }
+    .pin-widget-label { font-size: 10px; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1px; }
+    .pin-widget-row { display: flex; align-items: center; gap: 6px; }
+    .pin-input { width: 120px; background: transparent; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 8px; color: white; padding: 6px 10px; font-size: 13px; font-family: var(--font-body); outline: none; transition: var(--transition-smooth); }
+    .pin-input::placeholder { color: rgba(255,255,255,0.45); }
+    .pin-input:focus { border-color: var(--color-accent-green); }
+    .pin-check-btn { background: var(--color-accent-green); color: white; border: none; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); white-space: nowrap; }
+    .pin-check-btn:hover { filter: brightness(0.9); }
+    .pin-result { font-size: 12px; opacity: 0; transform: translateY(4px); transition: opacity 0.3s ease, transform 0.3s ease; max-width: 200px; text-align: right; line-height: 1.4; }
+    .pin-result.show { opacity: 1; transform: translateY(0); }
+    .pin-result-sub { font-size: 10px; opacity: 0.75; display: block; }
+    .header-mobile-row { display: none; align-items: center; justify-content: space-between; padding: 10px 0 6px; }
+    .hamburger-btn { background: transparent; border: none; cursor: pointer; color: white; padding: 4px; display: flex; align-items: center; }
+    .hamburger-btn svg { width: 24px; height: 24px; }
+    .mobile-nav-panel { max-height: 0; overflow: hidden; background: var(--color-header-deep); transition: max-height 0.35s ease; }
+    .mobile-nav-panel.open { max-height: 400px; }
+    .mobile-nav-panel a { display: block; padding: 13px 20px; color: rgba(255,255,255,0.9); font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.08); transition: var(--transition-smooth); }
+    .mobile-nav-panel a:hover { color: var(--color-accent-green); padding-left: 28px; }
+    .mobile-search-row { padding: 8px 0 4px; }
+    .mobile-pin-row { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .mobile-pin-label { font-size: 11px; color: rgba(255,255,255,0.8); }
+    .mobile-pin-controls { display: flex; align-items: center; gap: 6px; }
+    .mobile-pin-result { font-size: 11px; margin-top: 4px; padding: 0 2px; }
+
+    @media (max-width: 768px) {
+      .header-main-inner { display: block; } .header-search { max-width: 100%; } .header-pin-widget { display: none; }
+      .header-logo { display: flex; } .header-mobile-row { display: flex; } .info-bar-hours { display: none; } .header-info-bar { justify-content: center; }
+    }
+    @media (min-width: 769px) { .header-mobile-row { display: none !important; } .mobile-nav-panel { display: none !important; } }
+
+    /* TOUR MODAL */
+    @keyframes modal-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modal-card-in { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+    .tour-overlay { position: fixed; inset: 0; background: rgba(10,25,35,0.88); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 10000; display: flex; align-items: center; justify-content: center; animation: modal-overlay-in 0.4s ease; }
+    .tour-card { background: var(--color-bg-white); border-radius: 24px; width: min(520px, 92vw); max-height: 88vh; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.35); position: relative; display: flex; flex-direction: column; animation: modal-card-in 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .tour-skip-btn { position: absolute; top: 16px; right: 16px; z-index: 1; background: rgba(0,0,0,0.07); border: none; border-radius: 20px; padding: 6px 14px; font-size: 12px; color: var(--color-text-muted); cursor: pointer; transition: var(--transition-smooth); }
+    .tour-skip-btn:hover { background: rgba(0,0,0,0.13); }
+    .tour-slides { flex: 1; overflow: hidden; position: relative; }
+    .tour-slide { display: none; flex-direction: column; }
+    .tour-slide.active { display: flex; animation: slideIn 0.35s ease; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    .tour-slide-top { height: 200px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; }
+    .tour-slide-top::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 20px 20px; }
+    .tour-icon { font-size: 56px; position: relative; z-index: 1; line-height: 1; }
+    .tour-slide-top h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: white; position: relative; z-index: 1; }
+    .tour-slide-top p { font-size: 14px; color: rgba(255,255,255,0.75); font-style: italic; position: relative; z-index: 1; }
+    .tour-slide-top.s1 { background: linear-gradient(135deg, var(--color-header-deep), #0D2535); }
+    .tour-slide-top.s2 { height: 180px; background: linear-gradient(135deg, #1a5c3a, #0a3d22); }
+    .tour-slide-top.s3 { height: 180px; background: linear-gradient(135deg, #7c3a00, #4a2000); }
+    .tour-slide-body { padding: 24px 28px 16px; overflow-y: auto; }
+    .tour-shop-name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-header-deep); margin-bottom: 12px; }
+    .tour-owner-quote { font-size: 14px; line-height: 1.75; color: var(--color-text-muted); font-style: italic; margin-bottom: 14px; }
+    .tour-owner-attrib { font-style: normal; font-weight: 700; color: var(--color-header-deep); }
+    .tour-trust-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tour-badge { background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 20px; padding: 5px 12px; font-size: 11px; color: var(--color-text-primary); }
+    .tour-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .tour-cat-card { background: var(--color-bg-primary); border: 1.5px solid var(--color-border); border-radius: 12px; padding: 14px; cursor: pointer; transition: var(--transition-smooth); }
+    .tour-cat-card:hover { border-color: var(--color-accent-green); background: #F0FFF4; transform: translateY(-2px); }
+    .tour-cat-card .tcc-emoji { font-size: 24px; margin-bottom: 4px; }
+    .tour-cat-card .tcc-title { font-size: 13px; font-weight: 600; color: var(--color-header-deep); }
+    .tour-cat-card .tcc-sub { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; }
+    .tour-slide-body h3 { font-size: 16px; font-weight: 700; color: var(--color-header-deep); margin-bottom: 14px; }
+    .tour-promise { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .tour-promise + .tour-divider { height: 1px; background: var(--color-border); margin: 12px 0; }
+    .promise-icon-circle { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .promise-icon-circle.green { background: var(--color-accent-green); }
+    .promise-icon-circle.orange { background: var(--color-accent-orange); }
+    .promise-icon-circle.blue { background: #3B82F6; }
+    .promise-text-title { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+    .promise-text-sub { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; line-height: 1.5; }
+    .tour-final-btn { width: 100%; margin-top: 16px; background: var(--color-accent-green); color: white; border: none; border-radius: var(--radius-btn); padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+    .tour-final-btn:hover { filter: brightness(0.92); transform: translateY(-1px); }
+    .tour-nav { height: 60px; border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0; }
+    .tour-nav-btn { border: none; border-radius: var(--radius-btn); padding: 8px 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+    .tour-prev-btn { background: transparent; color: var(--color-text-muted); }
+    .tour-prev-btn:hover { background: var(--color-bg-primary); }
+    .tour-prev-btn.hidden { visibility: hidden; }
+    .tour-next-btn { background: var(--color-header-deep); color: white; }
+    .tour-next-btn:hover { background: var(--color-header-slate); }
+    .tour-dots { display: flex; gap: 6px; align-items: center; }
+    .tour-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); transition: var(--transition-smooth); }
+
+    /* HERO */
+    #hero-section { position: relative; min-height: 85vh; overflow: hidden; display: flex; align-items: center; }
+    .hero-bg-image { position: absolute; inset: 0; background-size: cover; background-position: center center; background-repeat: no-repeat; filter: brightness(0.9); z-index: 0; transition: background-image 0.8s ease; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; width: 100%; padding: 80px 0 60px; }
+    .hero-grid { display: grid; grid-template-columns: 60% 40%; align-items: center; gap: 40px; }
+    .hero-season-tag { display: inline-block; border-radius: 20px; padding: 6px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 16px; }
+    .hero-h1 { font-family: var(--font-heading); font-weight: 800; color: white; font-size: clamp(28px, 5vw, 52px); line-height: 1.15; }
+    .hero-h1 .accent { color: var(--color-accent-green); }
+    .hero-sub { font-size: 16px; color: rgba(255,255,255,0.82); max-width: 480px; margin: 20px 0 32px; line-height: 1.7; }
+    .hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary-hero { background: var(--color-accent-green); color: white; border: none; border-radius: var(--radius-btn); padding: 14px 32px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+    .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,200,83,0.45); }
+    .btn-ghost-hero { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: white; border-radius: var(--radius-btn); padding: 14px 32px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+    .btn-ghost-hero:hover { background: rgba(255,255,255,0.12); border-color: white; }
+    .hero-trust-strip { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 40px; align-items: center; }
+    .trust-stat { text-align: center; }
+    .trust-stat-num { font-family: var(--font-heading); font-weight: 700; font-size: 28px; color: var(--color-accent-green); display: block; }
+    .trust-stat-label { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; }
+    .trust-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+    .hero-visual { position: relative; height: 320px; }
+    .hero-shop-card { position: absolute; top: 0; left: 20px; width: 200px; background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden; transform: rotate(-3deg); transition: var(--transition-smooth); }
+    .hero-shop-card:hover { transform: rotate(0deg) translateY(-4px); }
+    .hero-shop-card img { width: 100%; height: 160px; object-fit: cover; }
+    .hero-shop-card-body { padding: 12px; }
+    .hero-shop-card-name { font-size: 12px; font-weight: 600; color: var(--color-header-deep); }
+    .hero-shop-card-area { font-size: 11px; color: var(--color-text-muted); }
+    .shop-card-ribbon { position: absolute; top: 12px; right: -4px; background: var(--color-accent-orange); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%); }
+    .hero-owner-card { position: absolute; bottom: 0; right: 0; width: 160px; background: white; border-radius: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.35); overflow: hidden; border: 3px solid var(--color-accent-green); transition: var(--transition-smooth); }
+    .hero-owner-card:hover { transform: translateY(-4px); }
+    .hero-owner-card img { width: 100%; height: 130px; object-fit: cover; object-position: top center; }
+    .hero-owner-card-body { padding: 10px; }
+    .hero-owner-card-name { font-size: 12px; font-weight: 700; color: var(--color-header-deep); }
+    .hero-owner-card-title { font-size: 10px; color: var(--color-text-muted); }
+    .hero-owner-card-verified { font-size: 9px; color: var(--color-accent-green); font-weight: 600; }
+    .owner-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-header-deep); color: white; font-size: 9px; font-weight: 600; border-radius: 10px; padding: 3px 10px; white-space: nowrap; }
+    .img-placeholder { background: linear-gradient(135deg, #2a4a5e, #1a3c4d); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 32px; }
+
+    @media (max-width: 768px) {
+      #hero-section { min-height: auto; } .hero-content { padding: 40px 0; } .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { height: 220px; margin-top: 32px; display: flex; gap: 16px; justify-content: center; }
+      .hero-shop-card { position: relative; top: auto; left: auto; transform: none; width: 160px; }
+      .hero-owner-card { position: relative; bottom: auto; right: auto; width: 140px; }
+      .hero-trust-strip { justify-content: center; gap: 20px; } .trust-sep { display: none; } .hero-sub { font-size: 15px; }
+    }
+
+    /* OWNER STORY */
+    #owner-story-section { background: var(--color-bg-white); padding: 80px 0; }
+    .owner-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .owner-eyebrow { font-size: 11px; font-weight: 600; color: var(--color-accent-green); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .owner-heading { font-family: var(--font-heading); font-size: clamp(22px, 3vw, 36px); font-weight: 700; color: var(--color-header-deep); line-height: 1.25; margin-bottom: 24px; }
+    .owner-heading .accent { color: var(--color-accent-green); }
+    .owner-blockquote { border-left: 4px solid var(--color-accent-green); padding: 20px 24px; border-radius: 0 12px 12px 0; background: linear-gradient(135deg, #F0FFF4, #E8F5E9); margin: 0 0 20px; position: relative; }
+    .owner-blockquote::before { content: '"'; font-size: 80px; color: var(--color-accent-green); opacity: 0.3; position: absolute; top: -10px; left: 12px; font-family: Georgia, serif; line-height: 1; pointer-events: none; }
+    .owner-quote-text { font-size: 16px; line-height: 1.8; color: var(--color-text-primary); font-style: italic; }
+    .owner-attrib { margin-top: 12px; font-size: 14px; font-weight: 700; color: var(--color-header-deep); font-style: normal; display: block; }
+    .owner-attrib-sub { font-size: 12px; color: var(--color-text-muted); font-style: normal; font-weight: 400; }
+    .owner-feature-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .owner-pill { background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 20px; padding: 8px 16px; font-size: 12px; font-weight: 600; color: var(--color-text-primary); }
+    .owner-photo-card { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-card-hover); }
+    .owner-photo-card img { width: 100%; height: 420px; object-fit: cover; object-position: top center; }
+    .owner-stats-row { display: flex; justify-content: space-around; padding: 20px; background: var(--color-bg-primary); }
+    .owner-stat { text-align: center; }
+    .owner-stat-num { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--color-accent-green); display: block; }
+    .owner-stat-label { font-size: 11px; color: var(--color-text-muted); }
+    @media (max-width: 768px) { .owner-story-grid { grid-template-columns: 1fr; gap: 32px; } .owner-photo-card img { height: 280px; } }
+
+    /* SEASON BANNER */
+    #season-banner { padding: 0; }
+    .season-banner-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; gap: 24px; flex-wrap: wrap; }
+    .season-banner-left { display: flex; align-items: center; gap: 16px; }
+    .season-banner-icon { font-size: 40px; }
+    .season-banner-heading { font-family: var(--font-heading); font-size: clamp(18px, 3vw, 26px); font-weight: 700; color: white; margin-bottom: 4px; }
+    .season-banner-sub { font-size: 14px; color: rgba(255,255,255,0.82); }
+    .season-banner-btn { background: white; border: none; border-radius: var(--radius-btn); padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition-smooth); white-space: nowrap; }
+    .season-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    @media (max-width: 768px) { .season-banner-inner { flex-direction: column; text-align: center; padding: 20px; gap: 16px; } }
+
+    /* CONTROLS */
+    #product-grid-section { padding: 48px 0 64px; }
+    .product-controls-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+    .product-section-heading { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--color-text-primary); }
+    .product-controls-right { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    
+    #offseason-reveal-block { margin-top: 48px; padding-top: 32px; width: 100%; }
+    .offseason-divider { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .offseason-divider .divider-line { flex: 1; height: 1px; background: var(--color-border); }
+    .offseason-divider .divider-text { font-size: 14px; color: var(--color-text-muted); white-space: nowrap; font-weight: 500; padding: 0 8px; }
+    #offseason-toggle-btn { display: block; margin: 0 auto 32px auto; padding: 12px 32px; background: transparent; border: 2px solid var(--color-border); border-radius: var(--radius-btn); font-size: 14px; font-weight: 600; color: var(--color-text-primary); cursor: pointer; transition: var(--transition-smooth); }
+    
+    #offseason-products-container { display: none; width: 100%; margin-top: 16px; }
+    .offseason-cat-header { display: flex; align-items: center; justify-content: space-between; margin: 24px 0 16px 0; padding-bottom: 10px; border-bottom: 2px solid var(--color-border); }
+    .offseason-cat-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-primary); }
+    .offseason-item-count { font-size: 12px; color: var(--color-text-muted); background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 20px; padding: 3px 12px; }
+    .offseason-grid { grid-template-columns: repeat(5, 1fr) !important; gap: 16px !important; }
+    @media (max-width: 1200px) { .offseason-grid { grid-template-columns: repeat(4, 1fr) !important; } }
+    @media (max-width: 900px) { .offseason-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+    @media (max-width: 600px) { .offseason-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+
+    .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-pill { background: var(--color-bg-primary); border: 1.5px solid var(--color-border); border-radius: 20px; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; color: var(--color-text-primary); transition: var(--transition-smooth); }
+    .filter-pill:hover { border-color: var(--color-header-deep); }
+    .filter-pill.active { background: var(--color-header-deep); color: white; border-color: transparent; }
+
+    /* Category group */
+    .cat-group { margin-bottom: 48px; }
+    .cat-group-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .cat-group-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-primary); }
+    .cat-count-badge { background: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 20px; padding: 3px 12px; font-size: 12px; color: var(--color-text-muted); }
+    .cat-group-line { height: 2px; background: var(--color-accent-green); border-radius: 2px; margin-bottom: 20px; }
+
+    /* Bestseller category header */
+    .bestseller-section-header { display: flex; align-items: center; justify-content: space-between; background: var(--grad-bestseller-header); border-radius: 14px; padding: 18px 24px; margin-bottom: 20px; position: relative; overflow: hidden; }
+    .bestseller-section-header::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
+    .bestseller-header-left h3 { color: white; font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .bestseller-header-left p { color: rgba(255,255,255,0.70); font-size: 13px; font-family: var(--font-body); }
+    .bestseller-badge { background: var(--grad-gold); color: #1A0A00; font-size: 12px; font-weight: 700; padding: 8px 18px; border-radius: 20px; white-space: nowrap; box-shadow: 0 4px 12px rgba(243,156,18,0.40); }
+    @media (max-width: 768px) { .bestseller-section-header { flex-direction: column; align-items: flex-start; gap: 12px; } .bestseller-header-left h3 { font-size: 17px; } }
+
+    /* Product grid */
+    .products-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    @media (max-width: 1280px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+    @media (max-width: 400px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    /* Product card */
+    .product-card { background: var(--color-bg-white); border-radius: var(--radius-card); border: 1.5px solid var(--color-border); overflow: hidden; position: relative; cursor: pointer; transition: var(--transition-smooth); }
+    .card-badges { position: absolute; top: 0; left: 0; z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+    .badge-season { font-size: 9px; font-weight: 600; border-radius: 0 0 6px 0; padding: 3px 8px; }
+    .badge-season.summer { background: rgba(0,188,212,0.15); color: #0097A7; border: 1px solid #00BCD4; }
+    .badge-season.winter { background: rgba(255,87,34,0.15); color: #E64A19; border: 1px solid #FF5722; }
+    .card-img-wrap { height: 160px; background: var(--color-bg-primary); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+    @media (max-width: 480px) { .card-img-wrap { height: 130px; } }
+    .card-body { padding: 14px; }
+    .card-brand { font-size: 11px; font-weight: 600; color: var(--color-accent-green); text-transform: uppercase; letter-spacing: 1px; }
+    .card-name { font-size: 14px; font-weight: 700; color: var(--color-text-primary); line-height: 1.3; margin: 4px 0 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-desc { font-size: 11px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-price-label { font-size: 10px; color: var(--color-text-muted); display: block; }
+    .card-price { font-size: 13px; font-weight: 600; color: var(--color-header-deep); }
+    .card-brands-row { display: flex; align-items: center; gap: 6px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--color-border); flex-wrap: wrap; }
+    .card-brand-logo { width: 28px; height: 20px; object-fit: contain; filter: grayscale(40%) opacity(0.75); border: 1px solid var(--color-border); border-radius: 4px; padding: 2px; background: white; transition: var(--transition-smooth); }
+    .card-brand-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
+    .card-more-brands { font-size: 11px; color: var(--color-accent-green); font-weight: 600; cursor: pointer; }
+    .card-more-brands:hover { text-decoration: underline; }
+    .grid-empty { text-align: center; padding: 48px 24px; }
+    .grid-empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .grid-empty h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--color-text-primary); }
+    .grid-empty p { font-size: 14px; color: var(--color-text-muted); margin-bottom: 16px; }
+    .grid-empty-btn { background: var(--color-header-deep); color: white; border: none; border-radius: var(--radius-btn); padding: 10px 24px; font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); }
+
+    /* PRE-FOOTER */
+    #pre-footer-trust { background: linear-gradient(135deg, var(--color-header-deep), #0D4E6B); padding: 40px 0; }
+    .trust-banner-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .trust-banner-left h2 { font-family: var(--font-heading); font-size: clamp(20px, 3vw, 30px); font-weight: 700; color: white; margin-bottom: 8px; line-height: 1.3; }
+    .trust-banner-left p { font-size: 14px; color: rgba(255,255,255,0.8); max-width: 420px; }
+    .trust-policy-cards { display: flex; gap: 16px; flex-wrap: wrap; }
+    .trust-policy-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 20px; text-align: center; border: 1px solid rgba(255,255,255,0.2); min-width: 120px; }
+    .trust-policy-card-icon { font-size: 28px; margin-bottom: 8px; }
+    .trust-policy-card-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .trust-policy-card-sub { font-size: 11px; color: rgba(255,255,255,0.7); }
+    @media (max-width: 768px) { .trust-banner-inner { flex-direction: column; text-align: center; } .trust-banner-left p { max-width: 100%; } }
+
+    /* FOOTER */
+    #main-footer { background: #0D1B2A; color: rgba(255,255,255,0.8); padding: 60px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 48px; }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo-img { height: 44px; object-fit: contain; margin-bottom: 12px; }
+    .footer-shop-name { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: white; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 4px; }
+    .footer-social-row { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); }
+    .footer-social-link svg { width: 18px; height: 18px; }
+    .footer-social-link.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transform: scale(1.1); }
+    .footer-social-link.facebook:hover { background: #1877F2; transform: scale(1.1); }
+    .footer-social-link.whatsapp:hover { background: #25D366; transform: scale(1.1); }
+    .footer-contact { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .footer-phone { font-size: 15px; font-weight: 600; color: white; transition: var(--transition-smooth); display: inline-block; }
+    .footer-phone:hover { color: var(--color-accent-green); }
+    .footer-hours, .footer-address { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .footer-col-heading { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent-green); margin-bottom: 16px; font-weight: 600; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; }
+    .footer-links li a { display: block; padding: 6px 0; color: rgba(255,255,255,0.65); font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); transition: var(--transition-smooth); }
+    .footer-links li a:hover { color: var(--color-accent-green); padding-left: 8px; }
+    .footer-policy-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    .footer-policy-item { margin-bottom: 8px; }
+    .footer-policy-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .footer-policy-text { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .footer-policy-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 12px 0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer-thank-quote { font-size: 12px; color: rgba(255,255,255,0.55); font-style: italic; text-align: center; max-width: 420px; line-height: 1.6; }
+    .footer-made-with { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    /* FLOATING BUTTONS */
+    @keyframes whatsapp-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    #whatsapp-fab { position: fixed; bottom: 28px; right: 28px; z-index: 9999; }
+    #whatsapp-link { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; border-radius: 50%; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition-smooth); animation: whatsapp-pulse 2.5s ease-in-out infinite; position: relative; }
+    #whatsapp-link svg { width: 28px; height: 28px; fill: white; flex-shrink: 0; }
+    #whatsapp-link:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(37,211,102,0.6); animation-play-state: paused; }
+    #whatsapp-link:hover .fab-tooltip { opacity: 1; transform: translateY(-50%) translateX(0); }
+    .fab-tooltip { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%) translateX(8px); background: var(--color-bg-white); color: var(--color-text-primary); font-family: var(--font-body); font-size: 0.78rem; font-weight: 500; white-space: nowrap; padding: 7px 14px; border-radius: var(--radius-btn); box-shadow: var(--shadow-card); opacity: 0; transition: var(--transition-smooth); pointer-events: none; border: 1px solid var(--color-border); }
+    .fab-tooltip::after { content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 6px solid var(--color-bg-white); }
+    #scroll-to-top-btn { position: fixed; bottom: 100px; right: 28px; z-index: 9998; width: 44px; height: 44px; background: var(--color-header-deep); color: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; opacity: 0; pointer-events: none; transition: var(--transition-smooth); box-shadow: var(--shadow-card); }
+    #scroll-to-top-btn.visible { opacity: 1; pointer-events: auto; }
+    #scroll-to-top-btn:hover { background: var(--color-header-slate); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+
+    /* SCROLL ANIMATIONS & RIPPLE */
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.in-view { opacity: 1; transform: translateY(0); }
+    @keyframes ripple-anim { from { transform: scale(0); opacity: 1; } to { transform: scale(3); opacity: 0; } }
+    .ripple { position: absolute; border-radius: 50%; background: rgba(0,200,83,0.25); pointer-events: none; animation: ripple-anim 0.5s ease; }
+
+    @media (max-width: 480px) {
+      #whatsapp-fab { bottom: 20px; right: 16px; }
+      #scroll-to-top-btn { bottom: 90px; right: 16px; }
+      .section-title { font-size: 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.75rem; }
+      #owner-story-section { padding: 48px 0; }
+      #hero-section { min-height: auto; }
+    }
+    @media (min-width: 1024px) { .section-title { font-size: 2rem; } }
+
+    @media print {
+      #main-header, #tour-modal-container, #whatsapp-fab, #scroll-to-top-btn, .filter-pills, #offseason-reveal-block, #pre-footer-trust { display: none !important; }
+    }
+    @media print {
+      #main-header, #tour-modal-container, #whatsapp-fab, #scroll-to-top-btn, .filter-pills, #offseason-reveal-block, #pre-footer-trust { display: none !important; }
+    }
+
+    /* YAHAN PASTE HUA HAI TUPLE SE --- FULL CARD BACKGROUND FIX --- */
+    .tour-card {
+      background: linear-gradient(rgba(15, 15, 15, 0.80), rgba(10, 20, 15, 0.95)), url('./assets/products/shop-tour.jpg') no-repeat center center !important;
+      background-size: cover !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    /* Top section aur body ko transparent karna taaki background photo dikhe */
+    .tour-slide-top.s1, .tour-slide-top.s2, .tour-slide-top.s3, .tour-slide-body, .tour-nav {
+      background: transparent !important;
+    }
+    
+    /* Neeche ke text ko White aur bright karna taaki padhne mein aaye */
+    .tour-shop-name, .tour-owner-attrib, .tour-slide-body h3, .promise-text-title, .tcc-title {
+      color: #ffffff !important;
+    }
+    .tour-owner-quote, .tcc-sub, .promise-text-sub, .tour-skip-btn {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+    
+    /* Chote Cards aur Badges ka transparent look */
+    .tour-badge, .tour-cat-card {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+    }
+    .tour-cat-card:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: var(--color-accent-gold) !important;
+    }
+   /* --- MOBILE HERO BACKGROUND FIX (FINAL REVISED) --- */
+@media (max-width: 768px) {
+
+  #hero-section {
+    min-height: 100svh; /* full viewport on mobile */
+    align-items: flex-start;
+  }
+
+  .hero-bg-image {
+    background-position: 65% center !important;
+    background-size: cover !important;
+  }
+
+  .hero-overlay {
+    /* Dark on left where text is, lighter on right so image shows */
+    background: linear-gradient(
+      105deg,
+      rgba(10, 5, 0, 0.92) 0%,
+      rgba(10, 5, 0, 0.85) 40%,
+      rgba(10, 5, 0, 0.45) 65%,
+      rgba(0, 0, 0, 0.15) 100%
+    ) !important;
+  }
+
+  .hero-content {
+    padding: 36px 0 32px !important;
+    width: 100%;
+  }
+
+  .hero-grid {
+    /* KEEP two columns on mobile — text left, image right */
+    grid-template-columns: 58% 42% !important;
+    gap: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .hero-left {
+    padding-right: 8px;
+  }
+
+  /* Smaller headline on mobile */
+  .hero-h1 {
+    font-size: clamp(22px, 6.5vw, 32px) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Hide subtitle on mobile to save space */
+  .hero-sub {
+    font-size: 12px !important;
+    margin: 10px 0 16px !important;
+    line-height: 1.5 !important;
+    color: rgba(255,255,255,0.85) !important;
+  }
+
+  /* Buttons stack vertically, full width */
+  .hero-cta-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .btn-primary-hero,
+  .btn-ghost-hero {
+    padding: 11px 20px !important;
+    font-size: 13px !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Trust strip — smaller, tighter */
+  .hero-trust-strip {
+    margin-top: 20px !important;
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .trust-stat-num {
+    font-size: 20px !important;
+  }
+
+  .trust-stat-label {
+    font-size: 8px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .trust-sep {
+    display: block !important; /* Keep separators visible */
+    height: 28px !important;
+  }
+
+  /* Hero visual — RIGHT side, visible but compact */
+  .hero-visual {
+    height: auto !important;
+    min-height: 280px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    padding-top: 8px;
+  }
+
+  /* Shop card — smaller on mobile */
+  .hero-shop-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: rotate(-2deg) !important;
+    width: 130px !important;
+  }
+
+  .hero-shop-card img,
+  .hero-shop-card .img-placeholder {
+    height: 100px !important;
+  }
+
+  /* Owner card — overlapping below shop card */
+  .hero-owner-card {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 110px !important;
+    margin-top: -20px !important;
+    margin-left: 20px !important;
+  }
+
+  .hero-owner-card img,
+  .hero-owner-card .img-placeholder {
+    height: 90px !important;
+  }
+
+  /* Season tag — smaller */
+  .hero-season-tag {
+    font-size: 10px !important;
+    padding: 4px 12px !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  .hero-grid {
+    grid-template-columns: 60% 40% !important;
+  }
+
+  .hero-h1 {
+    font-size: 20px !important;
+  }
+
+  .hero-sub {
+    font-size: 11px !important;
+  }
+
+  .hero-shop-card {
+    width: 110px !important;
+  }
+
+  .hero-owner-card {
+    width: 95px !important;
+  }
+}
+  </style>
+</head>
+<body>
+  </style>
+</head>
+<body>
+  </style>
+</head>
+<body>
+
+  <div id="repair-announcement-bar">
+    <div class="repair-bar-inner">
+      <div class="repair-bar-left">
+        <span class="repair-bar-icon">🛠️</span>
+        <span class="repair-bar-text">
+          <strong>Expert Electrical Repairing &amp; Servicing</strong>
+          &nbsp;Available In-Shop &amp; Within 10KM
+        </span>
+      </div>
+      <div class="repair-bar-divider" aria-hidden="true">|</div>
+      <div class="repair-bar-right">
+        <span class="repair-bar-phone-label">📞 Call Now:</span>
+        <a href="tel:9838582104" class="repair-bar-phone-link" aria-label="Call us now">
+          9838582104
+        </a>
+      </div>
+      <button id="repair-bar-close" aria-label="Close announcement bar" title="Dismiss">✕</button>
+    </div>
+  </div>
+
+  <div id="owner-watermark" aria-hidden="true"></div>
+
+  <div id="tour-modal-container"></div>
+
+  <header id="main-header">
+    <div class="header-info-bar">
+      <div class="info-bar-left">
+        <span>📍 <strong>BK Electricals & Electronics</strong> | Kakadeo,Kanpur</span>
+        <span class="info-bar-sep">|</span>
+      <a href="tel:+919838582104">📞 +91-9838582104, 9336453796</a>
+      </div>
+      <div class="info-bar-hours">🕐 Mon–Sat: 10:00 AM – 8:00 PM &nbsp;|&nbsp; Sun: 12:00 PM – 5:00 PM</div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="header-main-inner">
+          <a class="header-logo" href="#" aria-label="Home">
+            <div class="logo-fallback" aria-hidden="true">⚡</div>
+            <div class="logo-text-block">
+              <span class="logo-shop-name">BK Electricals & Electronics</span>
+              <span class="logo-tagline">Sales &amp; Services</span>
+            </div>
+          </a>
+
+          <div class="header-search">
+            <div class="search-input-wrap">
+              <input type="search" id="main-search" class="search-input" placeholder="Search products, brands… e.g.  inverter" autocomplete="off" aria-label="Search products" />
+              <button class="search-icon-btn" aria-label="Search" id="search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </button>
+            </div>
+            <div class="search-dropdown" id="search-dropdown" role="listbox" aria-label="Search results"></div>
+          </div>
+
+          <div class="header-pin-widget" id="location-widget-desktop" style="text-align: right;">
+            <span class="pin-widget-label" style="display: block; margin-bottom: 8px;">📍 Visit Our Store</span>
+            <a href="https://www.google.com/maps/place/B.+K.+Electricals+%26+Electronics/@26.4807336,80.2893861,17z/data=!3m1!4b1!4m6!3m5!1s0x399c38110cea3d79:0xc14d5df2f12519dd!8m2!3d26.4807288!4d80.2919664!16s%2Fg%2F1q6jd_6m9?authuser=0&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="pin-check-btn" style="text-decoration: none; display: inline-block; padding: 8px 24px; cursor: pointer;">
+              🗺️ Get Directions
+            </a>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="header-mobile-row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 20px;">
+        
+        <!-- <a class="header-logo" href="#" aria-label="Home" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+          <div class="logo-fallback" style="width:36px;height:36px;font-size:18px;" aria-hidden="true">⚡</div>
+          <div class="logo-text-block">
+            <span class="logo-shop-name" style="font-size:15px; color: white; font-weight: bold;">BK Electricals</span>
+          </div>
+        </a> -->
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="https://www.google.com/maps/place/B.+K.+Electricals+%26+Electronics/@26.4807336,80.2893861,17z/data=!3m1!4b1!4m6!3m5!1s0x399c38110cea3d79:0xc14d5df2f12519dd!8m2!3d26.4807288!4d80.2919664!16s%2Fg%2F1q6jd_6m9?authuser=0&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="pin-check-btn" style="text-decoration: none; display: inline-block; padding: 6px 12px; font-size: 11px; cursor: pointer; background: var(--color-accent-green); color: white; border-radius: 6px;">
+          🗺️ Directions
+          </a>
+
+          <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" style="padding: 4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" width="24" height="24">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+        <div class="mobile-nav-panel" id="mobile-nav-panel" role="navigation">
+          
+          <!-- HIDING PIN AND SEARCH TO PREVENT JS ERRORS -->
+          <div style="display: none;">
+            <div class="mobile-pin-row">
+              <span class="mobile-pin-label">📍 Check Service Area:</span>
+              <div class="mobile-pin-controls">
+                <input type="number" id="pin-input-mobile" class="pin-input" style="width:100px;font-size:12px;" placeholder="PIN Code" maxlength="6" aria-label="Enter PIN code" />
+                <button class="pin-check-btn" id="pin-check-mobile" style="font-size:11px;padding:5px 10px;">Check</button>
+              </div>
+            </div>
+            <div class="pin-result mobile-pin-result" id="pin-result-mobile" role="status" aria-live="polite" style="padding:0 4px 8px;"></div>
+            <div class="mobile-search-row">
+              <div class="search-input-wrap">
+                <input type="search" id="main-search-mobile" class="search-input" placeholder="Search products…" autocomplete="off" aria-label="Search products" />
+                <button class="search-icon-btn" aria-label="Search" id="search-btn-mobile">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="search-dropdown" id="search-dropdown-mobile" role="listbox" aria-label="Search results"></div>
+            </div>
+          </div>
+          <!-- HIDDEN SECTION ENDS -->
+
+          <!-- VISIBLE MENU LINKS -->
+          <a href="#hero-section" class="mobile-nav-link">🏠 Home</a>
+          <a href="#product-grid-section" class="mobile-nav-link">📦 All Products</a>
+          <a href="#category-combos" class="mobile-nav-link">⚡ Inverter+Battery Combos</a>
+          <a href="#category-inverters" class="mobile-nav-link">⚡ Inverters</a>
+          <a href="#category-batteries" class="mobile-nav-link">🔋 Batteries</a>
+          <a href="#category-coolers" class="mobile-nav-link">🌀 Coolers &amp; Fans</a>
+          <a href="#category-lights" class="mobile-nav-link">💡 LED Lights</a>
+          <a href="#category-pumps" class="mobile-nav-link">💧 Pumps</a>
+          <a href="#owner-story-section" class="mobile-nav-link">👤 About Owner</a>
+          <a href="#main-footer" class="mobile-nav-link">📞 Contact Us</a>
+          <a href="https://wa.me/919838582104" class="mobile-nav-link whatsapp-nav-link" target="_blank">💬 WhatsApp Us</a>
+        </div>
+  </header>
+
+  <section id="hero-section" aria-label="Hero">
+    <div class="hero-bg-image" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div id="hero-season-tag" class="hero-season-tag animate-on-scroll"></div>
+            <h1 class="hero-h1 animate-on-scroll" style="transition-delay:0.1s;">
+              Your Trusted<br>
+              <span class="accent">Electrical</span><br>
+              Shop, Since 1998.
+            </h1>
+            <p class="hero-sub animate-on-scroll" style="transition-delay:0.2s;">
+              From inverters to coolers, lights to batteries — everything your home needs, under one roof.
+              Genuine brands. Expert advice. Local trust. ⚡
+            </p>
+            <div class="hero-cta-row animate-on-scroll" style="transition-delay:0.3s;">
+              <button class="btn-primary-hero" onclick="document.getElementById('product-grid-section').scrollIntoView({behavior:'smooth'})">
+                Browse Products ↓
+              </button>
+              <a class="btn-ghost-hero" href="tel:+919838582104">📞 Call Us Now</a>
+            </div>
+            <div class="hero-trust-strip animate-on-scroll" style="transition-delay:0.4s;">
+              <div class="trust-stat">
+                <span class="trust-stat-num" data-target="25">0+</span>
+                <span class="trust-stat-label">Years in Business</span>
+              </div>
+              <div class="trust-sep" aria-hidden="true"></div>
+              <div class="trust-stat">
+                <span class="trust-stat-num" data-target="40">0k+</span>
+                <span class="trust-stat-label">Happy Customers</span>
+              </div>
+              <div class="trust-sep" aria-hidden="true"></div>
+              <div class="trust-stat">
+                <span class="trust-stat-num" data-target="15">0+</span>
+                <span class="trust-stat-label">Product Categories</span>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="season-banner" aria-label="Seasonal Highlight"></section>
+
+  <section id="product-grid-section" aria-label="Our Products">
+    <div class="container">
+      <div class="product-controls-row">
+        <div class="product-section-heading">Our Products</div>
+        <div class="product-controls-right">
+          <div class="filter-pills" id="filter-pills" role="group" aria-label="Filter by category">
+            <button class="filter-pill active" data-cat="all">All</button>
+            <button class="filter-pill" data-cat="inverters">⚡ Inverters</button>
+            <button class="filter-pill" data-cat="batteries">🔋 Batteries</button>
+            <button class="filter-pill" data-cat="combos">📦 Combos</button>
+            <button class="filter-pill" data-cat="coolers">🌀 Coolers</button>
+            <button class="filter-pill" data-cat="fans">🌬️ Fans</button>
+            <button class="filter-pill" data-cat="pedestal">💨 Pedestal</button>
+            <button class="filter-pill" data-cat="exhaust">🔄 Exhaust</button>
+            <button class="filter-pill" data-cat="lights">💡 Lights</button>
+            <button class="filter-pill" data-cat="batten">🔦 Batten</button>
+            <button class="filter-pill" data-cat="switches">🔌 Switches</button>
+            <button class="filter-pill" data-cat="iron">🪜 Iron</button>
+            <button class="filter-pill" data-cat="mixers">🥣 Mixers</button>
+            <button class="filter-pill" data-cat="pumps">💧 Pumps</button>
+            <button class="filter-pill" data-cat="heaters">🔥 Heaters</button>
+            <button class="filter-pill" data-cat="geysers">🚿 Geysers</button>
+            <button class="filter-pill" data-cat="immersion">⚡ Immersion</button>
+          </div>
+        </div>
+      </div>
+      <div id="product-grid-output"></div>
+    </div>
+  </section>
+
+  <section id="owner-story-section" aria-label="About the Owner">
+    <div class="container">
+      <div class="owner-story-grid">
+        <div class="owner-story-left animate-on-scroll">
+          <p class="owner-eyebrow">👤 Meet The Owner</p>
+          <h2 class="owner-heading">
+            A Story Built on Trust &amp;<br>
+            <span class="accent">Electrical</span> Expertise
+          </h2>
+          <blockquote class="owner-blockquote">
+            <p class="owner-quote-text">
+              For over 28 years, this shop has been more than just a store — it's been a
+              neighbor you can trust when the lights go out. Every product I keep on my shelf,
+              I keep it as if I'm buying it for my own home.
+            </p>
+            <span class="owner-attrib">
+              — Badri Prasad Maurya, Proprietor
+              <span class="owner-attrib-sub">[BK Electrical & Electronics] &nbsp;|&nbsp; Est. 1998</span>
+            </span>
+          </blockquote>
+          <div class="owner-feature-pills">
+            <span class="owner-pill">💡 Expert Electrical Advice — Free!</span>
+            <span class="owner-pill">🛡️ Only Genuine Products</span>
+          </div>
+        </div>
+
+        <div class="owner-story-right animate-on-scroll" style="transition-delay:0.15s;">
+          <div class="owner-photo-card">
+            
+            <!-- BLUE PLACEHOLDER REMOVED, OWNER PIC ADDED HERE -->
+            <img src="./assets/products/owner-pic.jpg" alt="Owner - Badri Prasad Maurya" style="width: 100%; height: 420px; object-fit: cover; display: block; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+            
+            <div class="owner-stats-row">
+              <div class="owner-stat">
+                <span class="owner-stat-num" data-target="25">0+</span>
+                <span class="owner-stat-label">Years</span>
+              </div>
+              <div class="owner-stat">
+                <span class="owner-stat-num" data-target="40">0k+</span>
+                <span class="owner-stat-label">Customers</span>
+              </div>
+              <div class="owner-stat">
+                <span class="owner-stat-num" data-target="100">0</span>
+                <span class="owner-stat-label">% Genuine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pre-footer-trust" aria-label="Our Promise">
+    <div class="container">
+      <div class="trust-banner-inner">
+        <div class="trust-banner-left animate-on-scroll">
+          <h2>Ghar Tak Repair, Dukaan Par Guarantee! 🛠️</h2>
+          <p>Expert repair service within 10km. No delivery, but we promise — worth every visit!</p>
+        </div>
+        <div class="trust-policy-cards animate-on-scroll" style="transition-delay:0.15s;">
+          <div class="trust-policy-card">
+            <div class="trust-policy-card-icon">🛠️</div>
+            <div class="trust-policy-card-title">Expert Shop Service</div>
+            <div class="trust-policy-card-sub">In-store diagnosis</div>
+          </div>
+          <div class="trust-policy-card">
+            <div class="trust-policy-card-icon">🚫</div>
+            <div class="trust-policy-card-title">No Delivery</div>
+            <div class="trust-policy-card-sub">Shop visit only</div>
+          </div>
+          <div class="trust-policy-card">
+            <div class="trust-policy-card-icon">✅</div>
+            <div class="trust-policy-card-title">Genuine Products</div>
+            <div class="trust-policy-card-sub">All brands certified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="main-footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="animate-on-scroll">
+          <div class="logo-fallback" style="width:44px;height:44px;font-size:22px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;" aria-hidden="true">⚡</div>
+          <div class="footer-shop-name">BK Electrical & Electronics</div>
+          <div class="footer-tagline">Bijli ke experts, aapke apne. ⚡</div>
+          <div class="footer-social-row" aria-label="Social links">
+            <a href="https://instagram.com/[handle]" target="_blank" rel="noopener" class="footer-social-link instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975-.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.924 2.104.493 3.535-.023 5.377.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 2.032 5.128 1.431 1.431 3.273 1.947 5.128 2.032C8.332 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 1.855-.085 3.697-.601 5.128-2.032 1.431-1.431 1.947-3.273 2.032-5.128C20.465.673 18.623.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://facebook.com/[handle]" target="_blank" rel="noopener" class="footer-social-link facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/919838582104" target="_blank" rel="noopener" class="footer-social-link whatsapp" aria-label="WhatsApp">
+              <svg viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16.004 2.667C8.641 2.667 2.667 8.641 2.667 16c0 2.37.641 4.59 1.76 6.504L2.667 29.333l6.997-1.733A13.27 13.27 0 0 0 16.004 29.333C23.365 29.333 29.333 23.36 29.333 16S23.365 2.667 16.004 2.667zm0 2.399c6.044 0 10.932 4.888 10.932 10.934 0 6.045-4.888 10.933-10.932 10.933a10.9 10.9 0 0 1-5.519-1.492l-.394-.232-4.085 1.013 1.046-3.97-.258-.415A10.9 10.9 0 0 1 5.071 16c0-6.046 4.888-10.934 10.933-10.934zm-3.01 5.329c-.22 0-.576.082-.877.41-.3.327-1.148 1.122-1.148 2.733s1.175 3.17 1.34 3.39c.164.22 2.297 3.658 5.652 4.985 2.8 1.105 3.368.885 3.974.83.606-.055 1.955-.799 2.232-1.569.277-.771.277-1.431.194-1.57-.083-.137-.303-.22-.634-.385-.33-.165-1.954-.964-2.257-1.074-.303-.11-.524-.165-.745.165-.22.33-.855 1.073-1.048 1.294-.193.22-.386.248-.717.082-.33-.165-1.394-.513-2.655-1.638-.982-.874-1.645-1.953-1.838-2.283-.193-.33-.02-.509.145-.673.149-.148.33-.386.495-.58.165-.192.22-.33.33-.55.11-.22.055-.413-.027-.578-.083-.165-.73-1.796-1.017-2.455-.27-.638-.548-.547-.745-.557a13.7 13.7 0 0 0-.634-.013z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="footer-contact">
+            <a href="tel:+91-9838582104" class="footer-phone">📞 +91-9838582104</a>
+            <span class="footer-hours">🕐 Mon–Sat: 10AM–8PM &nbsp;|&nbsp; Sun: 12PM–5PM</span>
+            <span class="footer-address">📍 [117/k/168 Canal Patti, Geeta Nagar Chouraha, Near Hari Girl Hostels,Kakadeo,Kanpur – 208025]</span>
+          </div>
+        </div>
+
+        <div class="animate-on-scroll" style="transition-delay:0.1s;">
+          <div class="footer-col-heading">Quick Links</div>
+          <ul class="footer-links scroll-links">
+            <li><a href="#hero-section">Home</a></li>
+            <li><a href="#product-grid-section">Our Products</a></li>
+            <li><a href="#category-inverters">Inverters &amp; Batteries</a></li>
+            <li><a href="#category-coolers">Coolers &amp; Fans</a></li>
+            <li><a href="#category-lights">LED Lights</a></li>
+            <li><a href="#owner-story-section">About Owner</a></li>
+            <li><a href="#main-footer">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="animate-on-scroll" style="transition-delay:0.2s;">
+          <div class="footer-col-heading">We Deal In</div>
+          <ul class="footer-links scroll-links">
+            <li><a href="#category-inverters">⚡ Inverters &amp; Batteries</a></li>
+            <li><a href="#category-coolers">🌀 Air Coolers</a></li>
+            <li><a href="#category-fans">🌬️ Ceiling Fans</a></li>
+            <li><a href="#category-lights">💡 LED Lights</a></li>
+            <li><a href="#category-heaters">🔥 Heaters</a></li>
+            <li><a href="#category-geysers">🚿 Geysers</a></li>
+            <li><a href="#category-switches">🔌 Switches &amp; Wiring</a></li>
+            <li><a href="#product-grid-section">🔋 UPS Systems</a></li>
+          </ul>
+        </div>
+
+        <div class="animate-on-scroll" style="transition-delay:0.3s;">
+          <div class="footer-col-heading">Service Policy</div>
+          <div class="footer-policy-card">
+            <div class="footer-policy-item">
+              <div class="footer-policy-title">📍 Expert Shop Service</div>
+              <div class="footer-policy-text">Bring your appliances to our shop for reliable, expert diagnosis and repair.</div>
+            </div>
+            <div class="footer-policy-divider"></div>
+            <div class="footer-policy-item">
+              <div class="footer-policy-title">🚫 No Home Delivery</div>
+              <div class="footer-policy-text">We are a physical retail store only. Aaiye, dekhiye, aur le jaiye! 😊</div>
+            </div>
+            <div class="footer-policy-divider"></div>
+            <div class="footer-policy-item">
+              <div class="footer-policy-title">✅ Genuine Products</div>
+              <div class="footer-policy-text">All products are brand-authorized and genuine. No duplicates, ever.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Your Shop Name. All Rights Reserved.</span>
+        <p class="footer-thank-quote">
+          "Aane ka shukriya. Whether you walked in or found us online — you're always welcome here.
+          We don't just sell electricals, hum apka ghar roshan karte hain. Come visit us anytime."
+          — [Badri Prasad Maurya] &amp; Family
+        </p>
+        <span class="footer-made-with">Made with ❤️ for our local community</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="whatsapp-fab">
+    <a href="https://wa.me/919838582104" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" id="whatsapp-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16.004 2.667C8.641 2.667 2.667 8.641 2.667 16c0 2.37.641 4.59 1.76 6.504L2.667 29.333l6.997-1.733A13.27 13.27 0 0 0 16.004 29.333C23.365 29.333 29.333 23.36 29.333 16S23.365 2.667 16.004 2.667zm0 2.399c6.044 0 10.932 4.888 10.932 10.934 0 6.045-4.888 10.933-10.932 10.933a10.9 10.9 0 0 1-5.519-1.492l-.394-.232-4.085 1.013 1.046-3.97-.258-.415A10.9 10.9 0 0 1 5.071 16c0-6.046 4.888-10.934 10.933-10.934zm-3.01 5.329c-.22 0-.576.082-.877.41-.3.327-1.148 1.122-1.148 2.733s1.175 3.17 1.34 3.39c.164.22 2.297 3.658 5.652 4.985 2.8 1.105 3.368.885 3.974.83.606-.055 1.955-.799 2.232-1.569.277-.771.277-1.431.194-1.57-.083-.137-.303-.22-.634-.385-.33-.165-1.954-.964-2.257-1.074-.303-.11-.524-.165-.745.165-.22.33-.855 1.073-1.048 1.294-.193.22-.386.248-.717.082-.33-.165-1.394-.513-2.655-1.638-.982-.874-1.645-1.953-1.838-2.283-.193-.33-.02-.509.145-.673.149-.148.33-.386.495-.58.165-.192.22-.33.33-.55.11-.22.055-.413-.027-.578-.083-.165-.73-1.796-1.017-2.455-.27-.638-.548-.547-.745-.557a13.7 13.7 0 0 0-.634-.013z"/>
+      </svg>
+      <span class="fab-tooltip">Baat karo WhatsApp pe! 💬</span>
+    </a>
+  </div>
+
+  <button id="scroll-to-top-btn" aria-label="Scroll to top" title="Back to top">↑</button>
+
+  <script>
+    const SEASON_CONFIG = {
+      getCurrentSeason: function() {
+        const m = new Date().getMonth();
+        if (m >= 2 && m <= 7) return 'summer';
+        if (m >= 10 || m <= 1) return 'winter';
+        return 'transition';
+      },
+      applySeason: function(season) {
+        document.body.setAttribute('data-season', season);
+        document.body.setAttribute('data-manual-season', season);
+        window.currentSeason = season;
+      }
+    };
+    SEASON_CONFIG.applySeason(SEASON_CONFIG.getCurrentSeason());
+    window.SEASON_CONFIG = SEASON_CONFIG;
+
+    const StorageHelper = {
+      hasSeenTour:  () => localStorage.getItem('elec_tour_seen') === 'true',
+      markTourSeen: () => localStorage.setItem('elec_tour_seen', 'true'),
+      clearTour:    () => localStorage.removeItem('elec_tour_seen')
+    };
+    window.StorageHelper = StorageHelper;
+
+    const SERVICE_CONFIG = {
+      shopPincode: '000000',
+      serviceablePincodes: ['000000','000001','000002','000003','000004','000005','000006'],
+      checkPin: function(userPin) { return this.serviceablePincodes.includes(userPin.toString().trim()); }
+    };
+    window.SERVICE_CONFIG = SERVICE_CONFIG;
+
+  window.INVENTORY = [
+      { id: 1, name: 'Microtek UPS EB 700VA Inverter', category: 'inverters', brand: 'Microtek', season: 'all', isBestSeller: true, description: 'Reliable home inverter, ideal for 2-3 fans + lights', imagePath: './assets/products/microtek-inverter.jpg', priceRange: '₹4,000 - ₹6,000', rippleGroup: 'warm', brandLogos: ['microtek', 'exide', 'genus'] },
+      { id: 2, name: 'Microtek UPS EB 900VA Inverter', category: 'inverters', brand: 'Microtek', season: 'all', isBestSeller: true, description: 'Pure sinewave output — safe for sensitive appliances', imagePath: './assets/products/mircrotek900-inverter.jpg', priceRange: '₹4,000 - ₹6,000', rippleGroup: 'warm', brandLogos: ['exide', 'microtek', 'genus'] },
+      { id: 3, name: 'Genus Edge 1050VA Home Inverter', category: 'inverters', brand: 'Genus', season: 'all', isBestSeller: true, description: 'Smart charging, LED display, overload protection', imagePath: './assets/products/genus-inverter.jpg', priceRange: '₹4,000 - ₹6,000', rippleGroup: 'warm', brandLogos: ['genus', 'microtek', 'exide'] },
+      { id: 4, name: 'Microtek MTek-Power 150Ah Tall Tubular Battery', category: 'batteries', brand: 'Microtek', season: 'all', isBestSeller: true, description: 'Long backup, low maintenance, 150Ah capacity', imagePath: './assets/products/microtek-battery.jpg', priceRange: '₹13,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['microtek', 'exide', 'genus'] },
+      { id: 5, name: 'Exide Inva Master 150Ah Tubular Battery', category: 'batteries', brand: 'Exide', season: 'all', isBestSeller: true, description: 'India\'s most trusted battery — 5yr warranty', imagePath: './assets/products/exide-battery.jpg', priceRange: '₹13,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['exide', 'microtek', 'genus'] },
+      { id: 6, name: 'Genus Tubular GC1800 150Ah Battery', category: 'batteries', brand: 'Genus', season: 'all', isBestSeller: true, description: 'Deep cycle design, excellent recharge recovery', imagePath: './assets/products/genus-battery.jpg', priceRange: '₹13,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['genus', 'exide', 'microtek'] },
+      { id: 7, name: 'Microtek Inverter + Battery Combo Pack', category: 'combos', brand: 'Microtek', season: 'all', isBestSeller: true, description: 'Complete power backup solution — plug & play ready', imagePath: './assets/products/microtek-combo.jpg', priceRange: '₹18,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['microtek', 'exide', 'genus'] },
+      { id: 8, name: 'Exide Inverter + Battery Combo Pack', category: 'combos', brand: 'Exide', season: 'all', isBestSeller: true, description: 'Tested compatibility — best performance guaranteed', imagePath: './assets/products/exide-combo.jpg', priceRange: '₹18,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['exide', 'microtek', 'genus'] },
+      { id: 9, name: 'Genus Inverter + Battery Combo Pack', category: 'combos', brand: 'Genus', season: 'all', isBestSeller: true, description: 'Smart combo — auto-sensing charger included', imagePath: './assets/products/genus-combo.jpg', priceRange: '₹18,000 - ₹20,000', rippleGroup: 'warm', brandLogos: ['genus', 'microtek', 'exide'] },
+      { id: 10, name: 'Vansal Desert Air Cooler 60L & many more', category: 'coolers', brand: 'Vansal', season: 'summer', isBestSeller: true, description: 'High-capacity desert cooler — cools large rooms fast', imagePath: './assets/products/vansal-cooler.jpg', priceRange: '₹13,000 - ₹16,000', rippleGroup: 'blue', brandLogos: ['vansal', 'vesper', 'reeco'] },
+      { id: 11, name: 'Vespa Personal Air Cooler 30L  & many more', category: 'coolers', brand: 'Vespa', season: 'summer', isBestSeller: true, description: 'Compact, portable — perfect for bedroom use', imagePath: './assets/products/vesper-cooler.jpg', priceRange: '₹6,000 - ₹10,000', rippleGroup: 'blue', brandLogos: ['vesper', 'vansal', 'reeco'] },
+      { id: 12, name: 'Reeco Tower Air Cooler 45L & many more', category: 'coolers', brand: 'Reeco', season: 'summer', isBestSeller: false, description: 'Sleek tower design, 4-way air deflection', imagePath: './assets/products/reeco-cooler.jpg', priceRange: '₹6,000 - ₹10,000', rippleGroup: 'blue', brandLogos: ['reeco', 'vansal', 'vesper'] },
+      { id: 13, name: 'Local Iron Body Desert Cooler 55L & many more', category: 'coolers', brand: 'Local', season: 'summer', isBestSeller: false, description: 'Heavy-duty loha/tin body — durable & powerful', imagePath: './assets/products/local-cooler.jpg', priceRange: '₹6,000 - ₹8,000', rippleGroup: 'blue', brandLogos: ['vansal', 'reeco', 'vesper'] },
+      { id: 14, name: 'Usha Striker Galaxy 1200mm Ceiling Fan', category: 'fans', brand: 'Usha', season: 'summer', isBestSeller: true, description: 'Energy-efficient, 400RPM, metallic finish blades', imagePath: './assets/products/usha-fan.jpg', priceRange: '₹1,400 - ₹2,000', rippleGroup: 'blue', brandLogos: ['usha', 'polar', 'bajaj'] },
+      { id: 15, name: 'Polar Wind 1200mm Premium Ceiling Fan', category: 'fans', brand: 'Polar', season: 'summer', isBestSeller: true, description: 'High-speed motor, double ball bearing', imagePath: './assets/products/polar-fan.jpg', priceRange: '₹1,400 - ₹2,000', rippleGroup: 'blue', brandLogos: ['polar', 'usha', 'bajaj'] },
+      { id: 16, name: 'Bajaj Regal Gold 1200mm Ceiling Fan', category: 'fans', brand: 'Bajaj', season: 'summer', isBestSeller: false, description: 'Classic design, powerful airflow, rust-proof body', imagePath: './assets/products/bajaj-fan.jpg', priceRange: '₹1,400 - ₹2,000', rippleGroup: 'blue', brandLogos: ['bajaj', 'usha', 'havells'] },
+      { id: 17, name: 'Havells Stealth 1200mm BLDC Fan', category: 'fans', brand: 'Havells', season: 'summer', isBestSeller: true, description: 'BLDC motor — 65% energy saving, remote control', imagePath: './assets/products/havells-fan.jpg', priceRange: '₹1,400 - ₹2,000', rippleGroup: 'blue', brandLogos: ['havells', 'usha', 'polar'] },
+      { id: 18, name: 'Polar Pedestal Fan 400mm', category: 'pedestal', brand: 'Polar', season: 'summer', isBestSeller: false, description: 'Height-adjustable, oscillating, 3-speed control', imagePath: './assets/products/polar-pedestal.jpg', priceRange: '₹1,400 - ₹3,000', rippleGroup: 'blue', brandLogos: ['polar', 'usha', 'polycool'] },
+      { id: 19, name: 'Usha Maxx Air 400mm Pedestal Fan', category: 'pedestal', brand: 'Usha', season: 'summer', isBestSeller: true, description: 'Powerful airflow, thermally protected motor', imagePath: './assets/products/usha-pedestal.jpg', priceRange: '₹1,400 - ₹3,000', rippleGroup: 'blue', brandLogos: ['usha', 'polar', 'mysoor'] },
+      { id: 20, name: 'Polycool High-Speed Pedestal Fan', category: 'pedestal', brand: 'Polycool', season: 'summer', isBestSeller: false, description: 'Wide oscillation angle, sturdy base, whisper-quiet', imagePath: './assets/products/polycool-pedestal.jpg', priceRange: '₹1,400 - ₹3,000', rippleGroup: 'blue', brandLogos: ['polycool', 'mysoor', 'polar'] },
+      { id: 21, name: 'Mysore Standard Pedestal Fan 400mm', category: 'pedestal', brand: 'Mysore', season: 'summer', isBestSeller: false, description: 'Budget-friendly, reliable performance', imagePath: './assets/products/mysore-pedestal.jpg', priceRange: '₹1,400 - ₹3,000', rippleGroup: 'blue', brandLogos: ['mysoor', 'polycool', 'polar'] },
+      { id: 22, name: 'Havells Ventilair 300mm Exhaust Fan', category: 'exhaust', brand: 'Havells', season: 'summer', isBestSeller: true, description: 'Silent operation, corrosion-resistant, kitchen-safe', imagePath: './assets/products/havells-exhaust.jpg', priceRange: '₹1,200 - ₹2,000', rippleGroup: 'blue', brandLogos: ['havells', 'polar', 'usha'] },
+      { id: 23, name: 'Polar Fresh-Air Fan 250mm', category: 'exhaust', brand: 'Polar', season: 'summer', isBestSeller: false, description: 'Dual-mode: exhaust + fresh air intake, wall-mount', imagePath: './assets/products/polar-exhaust.jpg', priceRange: '₹1,200 - ₹2,000', rippleGroup: 'blue', brandLogos: ['polar', 'havells', 'usha'] },
+      { id: 24, name: 'Havells Adore LED Bulb 3W-30W', category: 'lights', brand: 'Havells', season: 'all', isBestSeller: true, description: 'Premium LED range — cool white & warm white options', imagePath: './assets/products/havells-led.jpg', priceRange: '₹70 - ₹500', rippleGroup: 'gold', brandLogos: ['havells', 'surya', 'halonix'] },
+      { id: 25, name: 'Surya Neo LED Bulb 5W-25W', category: 'lights', brand: 'Surya', season: 'all', isBestSeller: false, description: 'Long-life 25,000hr rated, energy star certified', imagePath: './assets/products/surya-led.jpg', priceRange: '₹70 - ₹500', rippleGroup: 'gold', brandLogos: ['surya', 'havells', 'halonix'] },
+      { id: 26, name: 'Halonix Prime LED Bulb 7W-20W', category: 'lights', brand: 'Halonix', season: 'all', isBestSeller: true, description: '270° wide beam angle, flicker-free technology', imagePath: './assets/products/halonix-led.jpg', priceRange: '₹70 - ₹500', rippleGroup: 'gold', brandLogos: ['halonix', 'havells', 'surya'] },
+      { id: 27, name: 'Havells Linear LED Batten 20W-40W', category: 'batten', brand: 'Havells', season: 'all', isBestSeller: true, description: 'Sleek slim batten, IP40 rated, no flickering', imagePath: './assets/products/havells-batten.jpg', priceRange: '₹120 - ₹450', rippleGroup: 'gold', brandLogos: ['havells', 'surya', 'halonix'] },
+      { id: 28, name: 'Surya Octane LED Batten 18W-36W', category: 'batten', brand: 'Surya', season: 'all', isBestSeller: false, description: 'High-lumen output, cool daylight, 3yr warranty', imagePath: './assets/products/surya-batten.jpg', priceRange: '₹120 - ₹450', rippleGroup: 'gold', brandLogos: ['surya', 'halonix', 'havells'] },
+      { id: 29, name: 'Halonix Streak LED Batten 10W-40W', category: 'batten', brand: 'Halonix', season: 'all', isBestSeller: true, description: 'Affordable premium batten — shops & home both', imagePath: './assets/products/halonix-batten.jpg', priceRange: '₹120 - ₹450', rippleGroup: 'gold', brandLogos: ['halonix', 'surya', 'havells'] },
+      { id: 30, name: 'Aarkaylite trendy Range & many more', category: 'switches', brand: 'Anchor', season: 'all', isBestSeller: true, description: 'ISI marked, wide range — 6A to 32A variants', imagePath: './assets/products/arkaylite-trendy.jpg', priceRange: '₹50 - ₹700', rippleGroup: 'gold', brandLogos: ['anchor', 'havells', 'legrand'] },
+      { id: 31, name: 'Anchor Penta Switch & Socket Set & many more', category: 'switches', brand: 'Anchor', season: 'all', isBestSeller: true, description: 'Modular design, anti-bacterial housing, fire-safe', imagePath: './assets/products/anchor-penta.jpg', priceRange: '₹50 - ₹700', rippleGroup: 'gold', brandLogos: ['anchor', 'legrand', 'havells'] },
+      { id: 32, name: 'Usha arora dry 2000W Dry Iron & many more', category: 'iron', brand: 'Usha', season: 'all', isBestSeller: true, description: 'Non-stick coated soleplate, thermostat control', imagePath: './assets/products/usha-iron.jpg', priceRange: '₹600 - ₹2,000', rippleGroup: 'warm', brandLogos: ['usha', 'havells', 'surya'] },
+      { id: 33, name: 'Havells komfydry 2400W Steam Iron & many more', category: 'iron', brand: 'Havells', season: 'all', isBestSeller: true, description: 'Continuous steam, anti-drip, auto shut-off', imagePath: './assets/products/havells-iron.jpg', priceRange: '₹600 - ₹2,000', rippleGroup: 'warm', brandLogos: ['havells', 'usha', 'surya'] },
+      { id: 34, name: 'Surya Nxt 1000W Travel Iron & many more', category: 'iron', brand: 'Surya', season: 'all', isBestSeller: false, description: 'Compact, dual-voltage, ideal for travel & daily use', imagePath: './assets/products/surya-iron.jpg', priceRange: '₹600 - ₹2,000', rippleGroup: 'warm', brandLogos: ['surya', 'usha', 'havells'] },
+      { id: 35, name: 'Surya Mixer Grinder 500W 3-Jar', category: 'mixers', brand: 'Surya', season: 'all', isBestSeller: true, description: 'Stainless steel jars, 3-speed control, ISI marked', imagePath: './assets/products/surya-mixer.jpg', priceRange: '₹2,500 - ₹8,000', rippleGroup: 'warm', brandLogos: ['surya', 'sujata', 'philips'] },
+      { id: 36, name: 'Sujata Powermatic Plus 900W Mixer', category: 'mixers', brand: 'Sujata', season: 'all', isBestSeller: true, description: 'Heavy-duty motor, ideal for tough grinding tasks', imagePath: './assets/products/sujata-mixer.jpg', priceRange: '₹2,500 - ₹8,000', rippleGroup: 'warm', brandLogos: ['sujata', 'philips', 'surya'] },
+      { id: 37, name: 'Philips HL7756 750W Mixer Grinder', category: 'mixers', brand: 'Philips', season: 'all', isBestSeller: false, description: 'ProBlend 6 technology, 3 jars, 5yr motor warranty', imagePath: './assets/products/philips-mixer.jpg', priceRange: '₹2,500 - ₹8,000', rippleGroup: 'warm', brandLogos: ['philips', 'sujata', 'reeco'] },
+      { id: 38, name: 'Usha Mixer Grinder 600W', category: 'mixers', brand: 'Usha', season: 'all', isBestSeller: false, description: 'Compact design, overload protection, easy clean', imagePath: './assets/products/usha-mixer.jpg', priceRange: '₹2,500 - ₹8,000', rippleGroup: 'warm', brandLogos: ['usha', 'surya', 'philips'] },
+      { id: 39, name: 'Vansal Submersible Pump 0.5HP', category: 'pumps', brand: 'Vansal', season: 'all', isBestSeller: true, description: 'Deep borewell pump — 0.5HP to 2HP available', imagePath: './assets/products/vansal-pump.jpg', priceRange: '₹3,500 - ₹15,000', rippleGroup: 'blue', brandLogos: ['vansal', 'polar', 'crompton'] },
+      { id: 40, name: 'Polar Monoblock Water Pump 1HP', category: 'pumps', brand: 'Polar', season: 'all', isBestSeller: true, description: 'Surface monoblock, self-priming, cast iron body', imagePath: './assets/products/polar-pump.jpg', priceRange: '₹3,500 - ₹15,000', rippleGroup: 'blue', brandLogos: ['polar', 'crompton', 'crb'] },
+      { id: 41, name: 'Crompton Mini Sapphire Monoblock Pump', category: 'pumps', brand: 'Crompton', season: 'all', isBestSeller: false, description: 'Energy-efficient, thermal overload protected', imagePath: './assets/products/crompton-pump.jpg', priceRange: '₹3,500 - ₹15,000', rippleGroup: 'blue', brandLogos: ['crompton', 'vansal', 'crb'] },
+      { id: 42, name: 'CRB Heavy Duty Submersible Pump 1.5HP', category: 'pumps', brand: 'CRB', season: 'all', isBestSeller: false, description: 'Industrial-grade, stainless steel impeller', imagePath: './assets/products/crb-pump.jpg', priceRange: '₹3,500 - ₹15,000', rippleGroup: 'blue', brandLogos: ['crb', 'vansal', 'polar'] },
+      { id: 43, name: 'Usha Quartz Heater 800W', category: 'heaters', brand: 'Usha', season: 'winter', isBestSeller: true, description: 'Instant heating, tip-over protection, lightweight', imagePath: './assets/products/usha-heater.jpg', priceRange: '₹1,500 - ₹5,000', rippleGroup: 'warm', brandLogos: ['usha', 'havells', 'bajaj'] },
+      { id: 44, name: 'Havells quartz Heater', category: 'heaters', brand: 'Havells', season: 'winter', isBestSeller: false, description: '2400W, PTC fan, 3-heat settings, castor wheels', imagePath: './assets/products/havells-heater.jpg', priceRange: '₹1,500 - ₹5,000', rippleGroup: 'warm', brandLogos: ['havells', 'usha', 'bajaj'] },
+      { id: 45, name: 'Bajaj Majesty RX11 Room Heater', category: 'heaters', brand: 'Bajaj', season: 'winter', isBestSeller: true, description: 'Fan-forced heat circulation, 2000W, ISI marked', imagePath: './assets/products/bajaj-heater.jpg', priceRange: '₹1,500 - ₹5,000', rippleGroup: 'warm', brandLogos: ['bajaj', 'usha', 'surya'] },
+      { id: 46, name: 'Surya Ceramic Room Heater 2000W', category: 'heaters', brand: 'Surya', season: 'winter', isBestSeller: false, description: 'Carbon fiber heating element, silent, energy-saving', imagePath: './assets/products/surya-heater.jpg', priceRange: '₹1,500 - ₹5,000', rippleGroup: 'warm', brandLogos: ['surya', 'bajaj', 'havells'] },
+      { id: 47, name: 'Usha Misty 15L Storage Geyser & many more', category: 'geysers', brand: 'Usha', season: 'winter', isBestSeller: true, description: '15L capacity, glasslined tank, multi-function valve', imagePath: './assets/products/usha-geyser.jpg', priceRange: '₹6,000 - ₹15,000', rippleGroup: 'warm', brandLogos: ['usha', 'havells', 'bajaj'] },
+      { id: 48, name: 'Havells Monza 25L Storage Geyser', category: 'geysers', brand: 'Havells', season: 'winter', isBestSeller: true, description: 'Titanium enamel tank, 5-star rated, wall-mount', imagePath: './assets/products/havells-geyser.jpg', priceRange: '₹6,000 - ₹15,000', rippleGroup: 'warm', brandLogos: ['havells', 'bajaj', 'usha'] },
+      { id: 49, name: 'Bajaj New Shakti GL 10L Geyser', category: 'geysers', brand: 'Bajaj', season: 'winter', isBestSeller: true, description: 'Glass-lined tank, anti-siphon device, compact', imagePath: './assets/products/bajaj-geyser.jpg', priceRange: '₹6,000 - ₹15,000', rippleGroup: 'warm', brandLogos: ['bajaj', 'surya', 'usha'] },
+      { id: 50, name: 'Surya Instahot 3L Instant Geyser', category: 'geysers', brand: 'Surya', season: 'winter', isBestSeller: false, description: 'Instant hot water in seconds, space-saving design', imagePath: './assets/products/surya-geyser.jpg', priceRange: '₹6,000 - ₹15,000', rippleGroup: 'warm', brandLogos: ['surya', 'usha', 'havells'] },
+      { id: 51, name: 'Usha Immersion Water Heater Rod 1500W', category: 'immersion', brand: 'Usha', season: 'winter', isBestSeller: true, description: 'Copper element, ISI marked, bucket heating', imagePath: './assets/products/usha-immersion.jpg', priceRange: '₹500 - ₹1,000', rippleGroup: 'warm', brandLogos: ['usha', 'havells', 'bajaj'] },
+      { id: 52, name: 'Havells Immersion Rod 2000W', category: 'immersion', brand: 'Havells', season: 'winter', isBestSeller: false, description: 'Shock-proof handle, rust-free nickel plated element', imagePath: './assets/products/havells-immersion.jpg', priceRange: '₹500 - ₹1,000', rippleGroup: 'warm', brandLogos: ['havells', 'usha', 'surya'] },
+      { id: 53, name: 'Bajaj Immersion Rod 1500W', category: 'immersion', brand: 'Bajaj', season: 'winter', isBestSeller: false, description: 'Trusted brand, double insulated, thermostat guard', imagePath: './assets/products/bajaj-immersion.jpg', priceRange: '₹500 - ₹1,000', rippleGroup: 'warm', brandLogos: ['bajaj', 'surya', 'usha'] },
+      { id: 54, name: 'Surya Immersion Heater Rod 2000W', category: 'immersion', brand: 'Surya', season: 'winter', isBestSeller: true, description: 'Incoloy element, extra-long cord, safety indicator', imagePath: './assets/products/surya-immersion.jpg', priceRange: '₹500 - ₹1,000', rippleGroup: 'warm', brandLogos: ['surya', 'bajaj', 'havells'] },
+      { id: 55, name: 'Havells Reo Fresh Air Fan', category: 'exhaust', brand: 'Havells', season: 'summer', isBestSeller: false, description: 'Reo', imagePath: './assets/products/havells-reo-exhaust.jpg', priceRange: '₹1,200 - ₹2,000', rippleGroup: 'blue', brandLogos: ['havells', 'polar', 'usha'] },
+      { id: 56, name: 'Anchor Wire', category: 'switches', brand: 'Anchor', season: 'all', isBestSeller: false, description: 'Anchor wire', imagePath: './assets/products/anchor-wire.jpg', priceRange: '₹50 - ₹700', rippleGroup: 'gold', brandLogos: ['anchor', 'havells', 'legrand'] },
+      { id: 57, name: 'Havells Wire', category: 'switches', brand: 'Havells', season: 'all', isBestSeller: false, description: 'Wire', imagePath: './assets/products/havells-wire.jpg', priceRange: '₹50 - ₹700', rippleGroup: 'gold', brandLogos: ['havells', 'anchor', 'legrand'] }
+    ];
+    (function() {
+      const btn = document.getElementById('scroll-to-top-btn');
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const repairBarClose = document.getElementById('repair-bar-close');
+      const repairBar      = document.getElementById('repair-announcement-bar');
+      
+      if (repairBarClose && repairBar) {
+        repairBarClose.addEventListener('click', function () {
+          repairBar.style.maxHeight = repairBar.scrollHeight + 'px';
+          repairBar.style.overflow  = 'hidden';
+          repairBar.style.transition = 'max-height 0.35s ease, opacity 0.3s ease';
+          requestAnimationFrame(() => {
+            repairBar.style.maxHeight = '0px';
+            repairBar.style.opacity   = '0';
+          });
+          setTimeout(() => { repairBar.style.display = 'none'; }, 380);
+        });
+      }
+
+      /* ── Footer Smooth Scrolling ── */
+      document.querySelectorAll('.scroll-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#' || targetId === '#product-grid-section') return; 
+          
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            const rBarH = (repairBar && repairBar.style.display !== 'none') ? repairBar.offsetHeight : 0;
+            const y = target.getBoundingClientRect().top + window.scrollY - rBarH - 20; 
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }
+        });
+      });
+
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+
+      const hamburger = document.getElementById('hamburger-btn');
+      const mobileNav = document.getElementById('mobile-nav-panel');
+      hamburger.addEventListener('click', function() {
+        const open = mobileNav.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', open);
+      });
+      mobileNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // function checkPin(pinVal, resultEl) {
+      //   const pin = pinVal.trim();
+      //   resultEl.className = 'pin-result';
+      //   if (pin.length !== 6 || isNaN(pin)) {
+      //     resultEl.innerHTML = 'Please enter a valid 6-digit PIN code.';
+      //     resultEl.classList.add('show', 'invalid');
+      //   } else if (window.SERVICE_CONFIG.checkPin(pin)) {
+      //     resultEl.innerHTML = '✓ Bilkul paas hai! Repair service available 🛠️<span class="pin-result-sub">We\'ll be at your doorstep for repairs!</span>';
+      //     resultEl.classList.add('show', 'success');
+      //   } else {
+      //     resultEl.innerHTML = '📍 Thoda door hai. Repair at shop only.<span class="pin-result-sub">But you\'re always welcome to visit us!</span>';
+      //     resultEl.classList.add('show', 'outside');
+      //   }
+      //   setTimeout(() => { resultEl.classList.remove('show'); }, 8000);
+      // }
+
+      // document.getElementById('pin-check-desktop').addEventListener('click', function() {
+      //   checkPin(document.getElementById('pin-input-desktop').value, document.getElementById('pin-result-desktop'));
+      // });
+      // document.getElementById('pin-input-desktop').addEventListener('keydown', function(e) {
+      //   if (e.key === 'Enter') checkPin(this.value, document.getElementById('pin-result-desktop'));
+      // });
+      
+      const mobilePinBtn = document.getElementById('pin-check-mobile');
+      if(mobilePinBtn) {
+        mobilePinBtn.addEventListener('click', function() {
+          checkPin(document.getElementById('pin-input-mobile').value, document.getElementById('pin-result-mobile'));
+        });
+      }
+
+      const NON_ELECTRICAL = ['mobile','phone','laptop','computer','tablet','tv','refrigerator','fridge','washing machine','ac','air conditioner','furniture','cloth','food','medicine','grocery','shoes','bag','toy','book','cycle','bike'];
+
+      function buildResultItem(product) {
+        const div = document.createElement('div');
+        div.className = 'search-result-item';
+        div.setAttribute('role', 'option');
+        div.setAttribute('tabindex', '0');
+        div.innerHTML = `
+          <div class="search-result-thumb img-placeholder" style="font-size:16px;width:40px;height:40px;border-radius:8px;flex-shrink:0;">⚡</div>
+          <div class="search-result-info">
+            <div class="search-result-name">${product.name}</div>
+            <div class="search-result-meta">
+              <span class="search-cat-badge">${product.category}</span>
+              <span class="search-brand">${product.brand}</span>
+            </div>
+          </div>`;
+        div.addEventListener('click', function() { handleSearchSelect(product); });
+        div.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleSearchSelect(product); });
+        return div;
+      }
+
+      function handleSearchSelect(product) {
+        closeAllDropdowns();
+        document.getElementById('main-search').blur();
+        document.getElementById('main-search-mobile').blur();
+        const catPill = document.querySelector(`.filter-pill[data-cat="${product.category}"]`);
+        if (catPill) catPill.click();
+        document.getElementById('product-grid-section').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function() {
+          const card = document.querySelector(`.product-card[data-id="${product.id}"]`);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.classList.add('search-highlight');
+            card.addEventListener('animationend', () => card.classList.remove('search-highlight'), { once: true });
+          }
+        }, 600);
+      }
+
+      function doSearch(query, dropdownEl) {
+        dropdownEl.innerHTML = '';
+        if (!query || query.length < 2) { dropdownEl.classList.remove('active'); return; }
+
+        const q = query.toLowerCase();
+        const isNonElec = NON_ELECTRICAL.some(kw => q.includes(kw));
+
+        if (isNonElec) {
+          dropdownEl.innerHTML = `
+            <div class="search-not-found">
+              <div class="search-not-found-icon">⚡</div>
+              <h4>We don't sell this here</h4>
+              <p>Yeh toh hum nahi bechte bhai 😅<br>Hum sirf electricals mein experts hain — Coolers, Fans, Inverters, Batteries, Lights aur zyada!</p>
+              <button class="search-not-found-btn" id="search-browse-btn-${dropdownEl.id}">Browse Our Products ↓</button>
+            </div>`;
+          dropdownEl.classList.add('active');
+          dropdownEl.querySelector(`#search-browse-btn-${dropdownEl.id}`)?.addEventListener('click', function() {
+            closeAllDropdowns();
+            document.getElementById('product-grid-section').scrollIntoView({ behavior: 'smooth' });
+          });
+          return;
+        }
+
+        const results = window.INVENTORY.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          p.brand.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q)
+        ).slice(0, 8);
+
+        if (results.length === 0) {
+          dropdownEl.innerHTML = `
+            <div class="search-not-found">
+              <div class="search-not-found-icon">🔍</div>
+              <h4>Item not currently in stock</h4>
+              <p>Contact us on WhatsApp — hum arrange kar sakte hain!</p>
+              <a href="https://wa.me/919838582104?text=Hi!%20I'm%20looking%20for%20${encodeURIComponent(query)}" target="_blank" class="search-not-found-btn whatsapp" rel="noopener">💬 Ask on WhatsApp</a>
+            </div>`;
+        } else {
+          results.forEach(p => dropdownEl.appendChild(buildResultItem(p)));
+          const hint = document.createElement('div');
+          hint.className = 'search-hint';
+          hint.textContent = 'Aur bhi items hain — scroll karke dekho! 👇';
+          dropdownEl.appendChild(hint);
+        }
+        dropdownEl.classList.add('active');
+      }
+
+      function closeAllDropdowns() {
+        document.getElementById('search-dropdown').classList.remove('active');
+        document.getElementById('search-dropdown-mobile').classList.remove('active');
+      }
+
+      document.getElementById('main-search').addEventListener('input', function() {
+        doSearch(this.value, document.getElementById('search-dropdown'));
+      });
+      document.getElementById('main-search-mobile').addEventListener('input', function() {
+        doSearch(this.value, document.getElementById('search-dropdown-mobile'));
+      });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAllDropdowns(); });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.header-search')) closeAllDropdowns();
+      });
+
+      function updateHeroSeasonTag() {
+        const tag = document.getElementById('hero-season-tag');
+        if (!tag) return;
+        const s = window.currentSeason;
+        if (s === 'summer') {
+          tag.style.cssText = 'background:rgba(0,188,212,0.2);border:1px solid #00BCD4;color:#00BCD4;';
+          tag.textContent = '🌞 Summer Special — Coolers & Fans!';
+        } else if (s === 'winter') {
+          tag.style.cssText = 'background:rgba(255,87,34,0.2);border:1px solid #FF5722;color:#FF5722;';
+          tag.textContent = '❄️ Winter Ready — Heaters & Geysers!';
+        } else {
+          tag.style.cssText = 'background:rgba(0,200,83,0.2);border:1px solid #00C853;color:#00C853;';
+          tag.textContent = '⚡ All Products Available';
+        }
+      }
+      updateHeroSeasonTag();
+
+      function applyHeroBg(season) {
+        const bgDiv = document.querySelector('.hero-bg-image');
+        const overlayDiv = document.querySelector('.hero-overlay');
+        if (!bgDiv || !overlayDiv) return;
+
+        if (season === 'summer') {
+    // Tumhaari naye products waali image yahan se load hogi
+          bgDiv.style.backgroundImage = "url('./assets/hero-summer-bg.jpg')";
+          bgDiv.style.backgroundSize = "cover";
+          bgDiv.style.backgroundPosition = "center";
+    
+    // Naya Luxury Overlay: Left mein text ko read karne ke liye maroon tint, right mein transparent yellow glow
+          overlayDiv.style.background = 'linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 35%, transparent 60%)';
+  
+        } else if (season === 'winter') {
+          bgDiv.style.backgroundImage = "url('./assets/hero-winter-bg.png')";
+          overlayDiv.style.background = 'linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 35%, transparent 60%)';
+        } else {
+          bgDiv.style.backgroundImage = "url('./assets/hero-shop.jpg')";
+          overlayDiv.style.background = 'linear-gradient(135deg, rgba(26,60,77,0.80) 0%, rgba(13,37,53,0.65) 50%, rgba(0,0,0,0.50) 100%)';
+        }
+      }
+      applyHeroBg(window.currentSeason);
+
+      const heroSection = document.getElementById('hero-section');
+      const ownerWatermark = document.getElementById('owner-watermark');
+      if (heroSection && ownerWatermark) {
+        const heroObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              ownerWatermark.style.opacity = '0';
+            } else {
+              ownerWatermark.style.opacity = '0.04';
+            }
+          });
+        }, { threshold: 0.15 });
+        heroObserver.observe(heroSection);
+      }
+
+      function renderSeasonBanner() {
+        const banner = document.getElementById('season-banner');
+        const s = window.currentSeason;
+        let bg, icon, heading, sub, btnText, btnColor;
+        if (s === 'summer') {
+          bg = 'linear-gradient(135deg, #0D47A1, #00BCD4)';
+          icon = '🌡️'; heading = 'Beat The Heat This Summer! ☀️';
+          sub = 'Hamare top coolers aur fans dekho — best prices, best brands!';
+          btnText = 'Explore Coolers & Fans →'; btnColor = '#0097A7';
+        } else if (s === 'winter') {
+          bg = 'linear-gradient(135deg, #BF360C, #FF5722)';
+          icon = '❄️'; heading = 'Stay Warm This Winter! 🧣';
+          sub = 'Geysers aur heaters ab available hain — ghar ko warm rakho!';
+          btnText = 'Explore Heaters & Geysers →'; btnColor = '#BF360C';
+        } else {
+          bg = 'linear-gradient(135deg, #1A3C4D, #0D4E6B)';
+          icon = '⚡'; heading = 'All Products Available!';
+          sub = 'Inverters, Batteries, Lights — sab kuch yahan milega!';
+          btnText = 'Browse All Products →'; btnColor = '#1A3C4D';
+        }
+        banner.style.background = bg;
+        banner.innerHTML = `
+          <div class="container">
+            <div class="season-banner-inner">
+              <div class="season-banner-left">
+                <div class="season-banner-icon">${icon}</div>
+                <div>
+                  <div class="season-banner-heading">${heading}</div>
+                  <div class="season-banner-sub">${sub}</div>
+                </div>
+              </div>
+              <button class="season-banner-btn" style="color:${btnColor};" onclick="document.getElementById('product-grid-section').scrollIntoView({behavior:'smooth'})">${btnText}</button>
+            </div>
+          </div>`;
+      }
+      renderSeasonBanner();
+
+      let activeCategory = 'all';
+      let showingOffSeason = false;
+
+      function getSeasonSplit() {
+        const s = window.currentSeason;
+        if (s === 'winter') {
+          return {
+            primary:   ['heaters','geysers','immersion','inverters','batteries','combos','lights','batten','switches','iron','mixers','pumps'],
+            offSeason: ['coolers','fans','pedestal','exhaust']
+          };
+        }
+        return {
+          primary:   ['coolers','fans','pedestal','exhaust','inverters','batteries','combos','lights','batten','switches','iron','mixers','pumps'],
+          offSeason: ['heaters','geysers','immersion']
+        };
+      }
+
+      const CAT_LABELS = {
+        inverters:  'Inverters', batteries:  'Batteries', combos: 'Inverter & Battery Combos',
+        coolers:    'Air Coolers', fans: 'Ceiling Fans', pedestal: 'Pedestal Fans', exhaust: 'Exhaust Fans',
+        lights:     'LED Lights', batten: 'LED Batten Lights', switches: 'Switches & Wiring',
+        iron:       'Electric Irons', mixers: 'Mixer Grinders', pumps: 'Water Pumps',
+        heaters:    'Room Heaters', geysers: 'Water Geysers', immersion: 'Immersion Rods'
+      };
+      const BESTSELLER_CATS = ['inverters','batteries','combos'];
+
+      function buildBrandLogosHTML(product) {
+        const logos = (product.brandLogos || []);
+        let html = '<div class="card-brands-row">';
+        logos.forEach(brandKey => {
+          html += `<img class="card-brand-logo" src="./assets/brands/logo-${brandKey}.png" alt="${brandKey}" title="${brandKey}" onerror="this.style.display='none'" />`;
+        });
+        html += '</div>';
+        return html;
+      }
+
+      function buildProductCard(product) {
+        const s = window.currentSeason;
+        let badgeHTML = '<div class="card-badges">';
+        if (product.isBestSeller) badgeHTML += '<div class="badge-bestseller">🔥 Ekdum Bestseller!</div>';
+        if (product.season === 'summer' && s === 'summer') badgeHTML += '<div class="badge-season summer">☀️ Summer Pick</div>';
+        if (product.season === 'winter' && s === 'winter') badgeHTML += '<div class="badge-season winter">❄️ Winter Essential</div>';
+        badgeHTML += '</div>';
+
+        const rippleGroup = product.rippleGroup || 'warm';
+        return `
+          <div class="product-card animate-on-scroll" data-id="${product.id}" data-cat="${product.category}" data-ripple-group="${rippleGroup}">
+            ${badgeHTML}
+            <div class="card-img-wrap">
+              <img src="${product.imagePath}" alt="${product.name}"
+                onerror="this.parentElement.innerHTML='<div class=\\'img-placeholder\\'style=\\'height:100%;font-size:32px;\\'>⚡</div>'"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-brand">${product.brand}</div>
+              <div class="card-name">${product.name}</div>
+              <div class="card-desc">${product.description}</div>
+              <span class="card-price-label">Est. Range:</span>
+              <span class="card-price">${product.priceRange}</span>
+              ${buildBrandLogosHTML(product)}
+            </div>
+          </div>`;
+      }
+
+      /* Renders all products immediately — Show More removed entirely */
+      function renderCategoryProducts(products, gridEl, categoryKey) {
+        gridEl.innerHTML = '';
+        products.forEach(product => {
+          const wrap = document.createElement('div');
+          wrap.innerHTML = buildProductCard(product).trim();
+          const card = wrap.firstChild;
+          card.addEventListener('mousedown', (e) => createRipple(e, card));
+          gridEl.appendChild(card);
+        });
+      }
+
+      function insertCategoryDivider(parentEl, categoryKey) {
+        const divider = document.createElement('div');
+        divider.className = 'category-divider';
+        divider.setAttribute('data-category', categoryKey);
+        parentEl.appendChild(divider);
+      }
+
+      function renderSummerCollectionHeader(parentEl) {
+        if (window.currentSeason !== 'summer') return;
+        const header = document.createElement('div');
+        header.className = 'summer-collection-header';
+        header.innerHTML = `<h3>☀️ Summer Collection ${new Date().getFullYear()}</h3><p>Is garmi mein ghar ko thanda rakho — top brands, best prices, sab yahan!</p>`;
+        parentEl.appendChild(header);
+      }
+
+      function renderCategoryGroup(catsToShow, containerEl, catFilter) {
+        const s = window.currentSeason;
+        let totalShown = 0;
+        const processed = new Set();
+        containerEl.innerHTML = '';
+        let firstSummerCat = true;
+
+        catsToShow.forEach(cat => {
+          if (processed.has(cat)) return;
+          const isBestseller = BESTSELLER_CATS.includes(cat);
+          let catsInGroup = [cat];
+
+          if (isBestseller && (!catFilter || catFilter === 'all') && catsToShow.includes('inverters')) {
+            if (cat === 'inverters') {
+              const bestsellerOrder = ['combos', 'inverters', 'batteries'];
+              bestsellerOrder.forEach((catKey, index) => {
+                const catProducts = window.INVENTORY.filter(p => p.category === catKey && (p.season === 'all' || p.season === s));
+                if (!catProducts.length) return;
+                totalShown += catProducts.length;
+                processed.add(catKey);
+
+                const bestsellerTitles = { combos: '⚡ Inverter + Battery Combos', inverters: '⚡ Inverters', batteries: '🔋 Batteries' };
+                const bestsellerSubs = { combos: 'Complete power backup — ready to install!', inverters: 'Best inverters for home & office backup', batteries: 'Long-life tubular batteries — trusted brands' };
+
+                const catGroup = document.createElement('div');
+                catGroup.className = 'cat-group bestseller-group';
+                catGroup.id = `category-${catKey}`;
+                catGroup.style.scrollMarginTop = '120px';
+                catGroup.style.marginBottom = '48px';
+
+                const header = document.createElement('div');
+                header.className = 'bestseller-section-header';
+                header.innerHTML = `
+                  <div class="bestseller-header-left">
+                    <h3>${bestsellerTitles[catKey]}</h3>
+                    <p>${bestsellerSubs[catKey]}</p>
+                  </div>
+                  <div class="bestseller-header-right">
+                    <span class="bestseller-badge">🏆 #1 BESTSELLER</span>
+                  </div>
+                `;
+                catGroup.appendChild(header);
+
+                const divider = document.createElement('div');
+                divider.className = 'category-divider';
+                divider.setAttribute('data-category', catKey);
+                catGroup.appendChild(divider);
+
+                const gridEl = document.createElement('div');
+                gridEl.className = 'products-grid';
+                catGroup.appendChild(gridEl);
+
+                // Use the new render function (No Show More)
+                renderCategoryProducts(catProducts, gridEl, catKey);
+                containerEl.appendChild(catGroup);
+
+                if (index < bestsellerOrder.length - 1) {
+                  insertCategoryDivider(containerEl, catKey);
+                }
+              });
+              return;
+            } else if (cat === 'batteries' || cat === 'combos') {
+              return;
+            }
+          }
+
+          const products = window.INVENTORY.filter(p => {
+            const catMatch = catsInGroup.includes(p.category);
+            const seasonMatch = p.season === 'all' || p.season === s;
+            return catMatch && seasonMatch;
+          });
+
+          if (products.length === 0) return;
+          totalShown += products.length;
+          processed.add(cat);
+
+          const groupLabel = (CAT_LABELS[cat] || cat);
+
+          if ((cat === 'coolers' || cat === 'fans' || cat === 'pedestal' || cat === 'exhaust') && firstSummerCat) {
+            renderSummerCollectionHeader(containerEl);
+            firstSummerCat = false;
+          }
+
+          const catGroup = document.createElement('div');
+          catGroup.className = 'cat-group';
+          catGroup.id = `category-${cat}`;
+          catGroup.style.scrollMarginTop = '120px';
+
+          catGroup.innerHTML = `
+            <div class="cat-group-header">
+              <div class="cat-group-title">${groupLabel}</div>
+              <span class="cat-count-badge">${products.length} items</span>
+            </div>
+            <div class="cat-group-line"></div>`;
+
+          const gridEl = document.createElement('div');
+          gridEl.className = 'products-grid';
+          catGroup.appendChild(gridEl);
+          containerEl.appendChild(catGroup);
+
+          // Use the new render function (No Show More)
+          renderCategoryProducts(products, gridEl, cat);
+          insertCategoryDivider(containerEl, cat);
+        });
+
+        return totalShown;
+      }
+
+      function renderProductGrid(catFilter) {
+        const out = document.getElementById('product-grid-output');
+        const s = window.currentSeason;
+        const { primary, offSeason } = getSeasonSplit();
+
+        showingOffSeason = false;
+
+        let primaryCats = catFilter && catFilter !== 'all' ? [catFilter] : primary;
+        let totalShown = 0;
+        let html = '';
+
+        const isOffSeasonPill = catFilter && catFilter !== 'all' && offSeason.includes(catFilter);
+
+        if (isOffSeasonPill) {
+          primaryCats = [catFilter];
+        }
+
+        if (!isOffSeasonPill) {
+          const tempDiv = document.createElement('div');
+          totalShown = renderCategoryGroup(primaryCats, tempDiv, catFilter);
+          html = tempDiv.innerHTML;
+        } else {
+          html = '';
+          totalShown = 1; 
+        }
+
+        if (totalShown === 0 && !isOffSeasonPill) {
+          html = `<div class="grid-empty">
+            <div class="grid-empty-icon">🔍</div>
+            <h3>No products found</h3>
+            <p>Try a different filter!<br>Hum regularly naye items laate hain. 😊</p>
+            <button class="grid-empty-btn" onclick="resetFilters()">Clear Filter</button>
+          </div>`;
+        }
+
+        const isWinter = (s === 'winter');
+        const offDividerText = isWinter ? 'Looking for Summer Products? ☀️' : 'Looking for Winter Products? ❄️';
+        const offBtnText = isWinter ? 'Show Coolers & Fans ☀️' : 'Show Heaters & Geysers 🔥';
+
+        const offBlock = `
+          <div id="offseason-reveal-block">
+            <div class="offseason-divider">
+              <span class="divider-line"></span>
+              <span class="divider-text">${offDividerText}</span>
+              <span class="divider-line"></span>
+            </div>
+            <button id="offseason-toggle-btn">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+               ${offBtnText}
+            </button>
+            <div id="offseason-products-container"></div>
+          </div>`;
+
+        out.innerHTML = html + offBlock;
+        observeAnimatables();
+
+        out.querySelectorAll('.product-card').forEach((card, i) => {
+          card.style.transitionDelay = Math.min(i * 0.08, 0.5) + 's';
+        });
+
+        bindOffSeasonToggle(offSeason, isWinter);
+
+        if (isOffSeasonPill) {
+          const container = document.getElementById('offseason-products-container');
+          renderCategoryGroup([catFilter], container);
+          container.style.display = 'block';
+          showingOffSeason = true;
+          document.getElementById('offseason-toggle-btn').innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><polyline points="18 15 12 9 6 15"></polyline></svg> Hide Off-Season Products ✕`;
+          setTimeout(() => {
+            const rBarH = document.getElementById('repair-announcement-bar')?.offsetHeight || 0;
+            const y = container.getBoundingClientRect().top + window.scrollY - rBarH - 20; 
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }, 350);
+          observeAnimatables();
+        }
+      }
+
+      function bindOffSeasonToggle(offSeasonCats, isWinter) {
+        const btn = document.getElementById('offseason-toggle-btn');
+        const container = document.getElementById('offseason-products-container');
+        if (!btn || !container) return;
+
+        btn.addEventListener('click', function() {
+          showingOffSeason = !showingOffSeason;
+
+          if (showingOffSeason) {
+            container.innerHTML = ''; 
+            offSeasonCats.forEach(catKey => {
+              const catProducts = window.INVENTORY.filter(p => p.category === catKey);
+              if (!catProducts.length) return;
+
+              const subHeader = document.createElement('div');
+              subHeader.className = 'offseason-cat-header';
+              subHeader.innerHTML = `<h3 class="offseason-cat-title">${CAT_LABELS[catKey] || catKey}</h3><span class="offseason-item-count">${catProducts.length} items</span>`;
+              container.appendChild(subHeader);
+
+              const offGrid = document.createElement('div');
+              offGrid.className = 'products-grid offseason-grid';
+              container.appendChild(offGrid);
+
+              catProducts.forEach((product, i) => {
+                const wrap = document.createElement('div');
+                wrap.innerHTML = buildProductCard(product).trim();
+                const card = wrap.firstChild;
+                card.classList.add('animate-on-scroll'); // Add animation class for grid entry
+                card.addEventListener('mousedown', (e) => createRipple(e, card));
+                offGrid.appendChild(card);
+              });
+              
+              insertCategoryDivider(container, catKey);
+            });
+
+            container.style.display = 'block';
+            setTimeout(() => {
+              const rBarH = document.getElementById('repair-announcement-bar')?.offsetHeight || 0;
+              const y = container.getBoundingClientRect().top + window.scrollY - rBarH - 20; 
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }, 100);
+            
+            // Re-observe the newly added cards so they stagger animate in
+            observeAnimatables();
+            container.querySelectorAll('.product-card').forEach((card, i) => {
+              card.style.transitionDelay = Math.min(i * 0.08, 0.5) + 's';
+            });
+            
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><polyline points="18 15 12 9 6 15"></polyline></svg> Hide Off-Season Products ✕`;
+            btn.classList.add('expanded');
+          } else {
+            container.style.display = 'none';
+            container.innerHTML = '';
+            const seasonText = window.currentSeason === 'winter' ? 'Show Coolers & Fans ☀️' : 'Show Heaters & Geysers 🔥';
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg> ${seasonText}`;
+            btn.classList.remove('expanded');
+          }
+        });
+      }
+
+      window.resetFilters = function() {
+        activeCategory = 'all';
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+        renderProductGrid('all');
+      };
+
+      renderProductGrid('all');
+
+      document.getElementById('filter-pills').addEventListener('click', function(e) {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill) return;
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.cat;
+        renderProductGrid(activeCategory);
+      });
+
+      function createRipple(event, card) {
+        const rippleGroup = card.dataset.rippleGroup || 'warm';
+        const rippleColors = {
+          warm: 'rgba(192, 57, 43, 0.28)',
+          blue: 'rgba(2, 136, 209, 0.28)',
+          gold: 'rgba(243, 156, 18, 0.30)'
+        };
+        const color = rippleColors[rippleGroup] || rippleColors.warm;
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `position:absolute;border-radius:50%;background:${color};width:10px;height:10px;pointer-events:none;transform:scale(0);animation:rippleAnim 0.55s ease-out forwards;z-index:10;`;
+        const rect = card.getBoundingClientRect();
+        ripple.style.left = (event.clientX - rect.left - 5) + 'px';
+        ripple.style.top  = (event.clientY - rect.top  - 5) + 'px';
+        card.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      }
+
+      document.getElementById('product-grid-output').addEventListener('mousedown', function(e) {
+        const card = e.target.closest('.product-card');
+        if (!card) return;
+        createRipple(e, card);
+      });
+
+      function observeAnimatables() {
+        const io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.animate-on-scroll:not(.in-view)').forEach(el => io.observe(el));
+      }
+      observeAnimatables();
+
+      function easeOutQuad(t) { return t * (2 - t); }
+      function animateCounter(el, target, suffix) {
+        const duration = 1500;
+        const start = performance.now();
+        const from = 0;
+        function step(ts) {
+          const p = Math.min((ts - start) / duration, 1);
+          el.textContent = Math.round(from + (target - from) * easeOutQuad(p)) + (suffix || '');
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.textContent.replace(/[0-9.]/g, '');
+            animateCounter(el, target, suffix);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+      function buildTourModal() {
+        const container = document.getElementById('tour-modal-container');
+        container.innerHTML = `
+          <div class="tour-overlay" id="tour-overlay" role="dialog" aria-modal="true" aria-label="Welcome Tour">
+            <div class="tour-card" id="tour-card">
+              <button class="tour-skip-btn" id="tour-skip">Skip Tour ✕</button>
+              <div class="tour-slides">
+                <div class="tour-slide active" id="tour-slide-0">
+                  <div class="tour-slide-top s1">
+                    <div class="tour-icon">⚡</div>
+                    <h2 style="font-weight: 900; font-size: 34px; letter-spacing: 1px;">Welcome!</h2>
+                    <p style="font-weight: 600; font-size: 16px; color: #f1c40f; font-style: italic;">Aapka swagat hai! 🙏</p>
+                  </div>
+                  <div class="tour-slide-body">
+                    <div class="tour-shop-name">Your Electrical Shop</div>
+                    <p class="tour-owner-quote">
+                      "For over 28 years, this shop has been more than just a store —
+                      it's been a neighbor you can trust when the lights go out.
+                      Every product I keep on my shelf, I keep it as if I'm
+                      buying it for my own home."<br>
+                      <span class="tour-owner-attrib">— Badri Prasad Maurya, Proprietor</span>
+                    </p>
+                    <div class="tour-trust-badges">
+                      <span class="tour-badge">🏪 Est. 1998</span>
+                      <span class="tour-badge">⚡ 100+ Products</span>
+                      <span class="tour-badge">🛠️ Repair Experts</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tour-slide" id="tour-slide-1">
+                  <div class="tour-slide-top s2">
+                    <div class="tour-icon" style="font-size:52px;">🏠</div>
+                    <h2 style="font-weight: 900; font-size: 30px; letter-spacing: 0.5px;">Powering Homes</h2>
+                    <p style="font-weight: 600; font-size: 16px; color: #2ecc71; font-style: italic;">Hamare bestsellers! 🔥</p>
+                  </div>
+                  <div class="tour-slide-body">
+                    <h3>Our Most-Loved Categories</h3>
+                    <div class="tour-cat-grid">
+                      <div class="tour-cat-card">
+                        <div class="tcc-emoji">⚡</div>
+                        <div class="tcc-title">Inverters & Batteries</div>
+                        <div class="tcc-sub">#1 Bestseller — Microtek, Exide & more</div>
+                      </div>
+                      <div class="tour-cat-card">
+                        <div class="tcc-emoji">🌀</div>
+                        <div class="tcc-title">Coolers & Fans</div>
+                        <div class="tcc-sub">Beat the heat! Top brands</div>
+                      </div>
+                      <div class="tour-cat-card">
+                        <div class="tcc-emoji">💡</div>
+                        <div class="tcc-title">LED Lights</div>
+                        <div class="tcc-sub">Save bijli, save money!</div>
+                      </div>
+                      <div class="tour-cat-card">
+                        <div class="tcc-emoji">🔥</div>
+                        <div class="tcc-title">Heaters & Geysers</div>
+                        <div class="tcc-sub">Stay warm this winter</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tour-slide" id="tour-slide-2">
+                  <div class="tour-slide-top s3">
+                    <div class="tour-icon" style="font-size:52px;">🛠️</div>
+                    <h2 style="font-weight: 900; font-size: 30px; letter-spacing: 0.5px;">Our Promise</h2>
+                    <p style="font-weight: 600; font-size: 16px; color: #3498db; font-style: italic;">Aapki seva, hamara farz! 🙏</p>
+                  </div>
+                  <div class="tour-slide-body">
+                    <div class="tour-promise">
+                      <div class="promise-icon-circle green">📍</div>
+                      <div>
+                        <div class="promise-text-title">Expert Shop Service</div>
+                        <div class="promise-text-sub">Bring your appliances directly to our shop for immediate, expert diagnosis and repair.</div>
+                      </div>
+                    </div>
+                    <div class="tour-divider"></div>
+                    <div class="tour-promise">
+                      <div class="promise-icon-circle orange">🚫</div>
+                      <div>
+                        <div class="promise-text-title">No Home Delivery</div>
+                        <div class="promise-text-sub">We are an in-store shop. Come visit us — chai peete hain saath mein! ☕</div>
+                      </div>
+                    </div>
+                    <div class="tour-divider"></div>
+                    <div class="tour-promise">
+                      <div class="promise-icon-circle blue">✅</div>
+                      <div>
+                        <div class="promise-text-title">Genuine Products Only</div>
+                        <div class="promise-text-sub">Har product branded aur genuine hai. No duplicates, no compromise.</div>
+                      </div>
+                    </div>
+                    <button class="tour-final-btn" id="tour-explore-btn">Let's Explore! ⚡</button>
+                  </div>
+                </div>
+              </div>
+              <div class="tour-nav">
+                <button class="tour-nav-btn tour-prev-btn hidden" id="tour-prev">← Previous</button>
+                <div class="tour-dots" role="tablist">
+                  <div class="tour-dot active" id="dot-0" role="tab"></div>
+                  <div class="tour-dot" id="dot-1" role="tab"></div>
+                  <div class="tour-dot" id="dot-2" role="tab"></div>
+                </div>
+                <button class="tour-nav-btn tour-next-btn" id="tour-next">Next →</button>
+              </div>
+            </div>
+          </div>`;
+
+        let currentSlide = 0;
+        const slides = container.querySelectorAll('.tour-slide');
+        const dots = container.querySelectorAll('.tour-dot');
+        const prevBtn = container.querySelector('#tour-prev');
+        const nextBtn = container.querySelector('#tour-next');
+
+        function goToSlide(n) {
+          slides[currentSlide].classList.remove('active');
+          dots[currentSlide].classList.remove('active');
+          currentSlide = Math.max(0, Math.min(n, slides.length - 1));
+          slides[currentSlide].classList.add('active');
+          dots[currentSlide].classList.add('active');
+          prevBtn.classList.toggle('hidden', currentSlide === 0);
+          nextBtn.textContent = currentSlide === slides.length - 1 ? 'Start Exploring ⚡' : 'Next →';
+        }
+function closeTour() {
+          // window.StorageHelper.markTourSeen();  <-- Ye line delete karni hai!
+          const overlay = container.querySelector('#tour-overlay');
+          overlay.style.opacity = '0';
+          overlay.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => { container.innerHTML = ''; }, 300);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', function() {
+          if (currentSlide === slides.length - 1) { closeTour(); return; }
+          goToSlide(currentSlide + 1);
+        });
+        container.querySelector('#tour-skip').addEventListener('click', closeTour);
+        container.querySelector('#tour-explore-btn').addEventListener('click', function() {
+          closeTour();
+          setTimeout(() => document.getElementById('product-grid-section').scrollIntoView({ behavior: 'smooth' }), 350);
+        });
+        container.querySelector('#tour-overlay').addEventListener('click', function(e) {
+          if (e.target === this) closeTour();
+        });
+        document.addEventListener('keydown', function tourKeys(e) {
+          if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+          else if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+          else if (e.key === 'Escape') { closeTour(); document.removeEventListener('keydown', tourKeys); }
+        });
+      }
+
+     // Ab condition hata di hai, har baar load hoga
+      setTimeout(buildTourModal, 1200);
+
+      const debugBar = document.getElementById('debug-bar');
+      if (debugBar) debugBar.remove();
+
+    }); 
+  </script>
+
+</body>
+</html>
